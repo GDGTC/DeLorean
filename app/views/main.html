@@ -11,8 +11,8 @@
                 <small><span class="event-hero-icon fa fa-university"></span>{{ site.eventLocation }}</small>
               </div>
               <div>
-                <a ng-href="{{ site.speakerURL }}" target="_blank" class="cta cta-default all-caps">Become A Speaker</a>
-                <a ng-href="{{ site.ticketURL }}" target="_blank" class="cta cta-default all-caps">Buy Ticket</a>
+                <a ng-href="{{ site.speakerURL }}" ng-click="gaClick('button', 'click', 'Become A Speaker')" target="_blank" class="cta cta-default all-caps">Become A Speaker</a>
+                <a ng-href="{{ site.ticketURL }}" ng-click="gaClick('button', 'click', 'Buy Ticket')" target="_blank" class="cta cta-default all-caps">Buy Ticket</a>
               </div>
             </div>
           </div>
@@ -32,14 +32,14 @@
       <div class="col-lg-10 col-lg-offset-1">
         <p><strong>GDG DevFests</strong> are the largest Google related events in the world! Each DevFest is carefully crafted for you by your local GDG community to bring in awesome speakers, great topics, and lots fun! While no two events will be exactly alike, each GDG DevFest will, at its core, be powered by a shared belief that when developers come together to exchange ideas, amazing things can happen!</p>
       </div>
-      <a ng-href="{{ site.ticketURL }}" target="_blank" class="cta cta-default all-caps">Get Your Ticket</a>
+      <a ng-href="{{ site.ticketURL }}" ng-click="gaClick('button', 'click', 'Get Ticket')" target="_blank" class="cta cta-default all-caps">Get Your Ticket</a>
       <div class="clearfix"></div>
     </div>
   </div>
 </section>
 <section id="location" style="padding-bottom: 15px;">
   <div map-lazy-load="{{ gMapLazy }}" map-lazy-load-params="{{ gMapsUrl }}">
-    <map center="{{ map.lat }}, {{ map.lng }}" style="height: 400px;" zoom="{{ map.zoom }}" scrollwheel="false" map-type-control="false">
+    <map center="{{ map.center.lat }}, {{ map.center.lng }}" style="height: 400px;" zoom="{{ map.zoom }}" scrollwheel="false" map-type-control="false">
       <marker id="eventSpace" position="{{ map.lat }}, {{ map.lng }}"></marker>
       <info-window id="eventDetail" visible-on-marker="eventSpace">
         <div>
@@ -76,19 +76,19 @@
           <li><a href="https://www.google.com.ua/intl/en/about/" target="_blank"><img src="../images/google.png" title="Google" alt="Google" /></a></li>
           <li><a ng-href="{{ site.website }}" target="_blank"><img src="../images/gdg_group.png" title="{{ event.name }}" alt="{{ event.name }}" /></a></li>
         </ul>
-        <span ng-repeat="(key, value) in sponsors | groupBy:'level'">
+        <span ng-repeat="(key, value) in sponsors | levelSorter:'level' | groupBy:'level'">
           <h4>{{ key }} Sponsor</h4>
           <ul class="list-inline">
             <li ng-repeat="sponsor in value">
-              <a ng-href="{{ sponsor.link }}" target="_blank"><img ng-src="{{ sponsor.image }}" title="{{ sponsor.description }}" alt="{{ sponsor.company }}" /></a>
+              <a ng-href="{{ sponsor.link }}" ng-click="gaClick('sponsor', 'click', '{{ sponsor.company }}')" target="_blank"><img ng-src="{{ sponsor.image }}" title="{{ sponsor.description }}" alt="{{ sponsor.company }}" /></a>
               <a ng-show-auth="" class="btn btn-sm btn-primary" ng-click="openFormModal(sponsor)">Edit</a>
               <a ng-show-auth="" class="btn btn-sm btn-danger" ng-click="deleteSponsor(sponsor)">Delete</a>
             </li>
           </ul>
         </span>
         <div>
-          <a ng-href="#!/sponsorship" class="cta cta-default all-caps">Learn More</a>
-          <a ng-href="{{ site.sponsorURL }}" target="_blank" class="cta cta-default all-caps">Become a Sponsor</a>
+          <a ng-href="#!/sponsorship" ng-click="gaClick('button', 'click', 'Sponsor: Learn More')" class="cta cta-default all-caps">Learn More</a>
+          <a ng-href="{{ site.sponsorURL }}" ng-click="gaClick('button', 'click', 'Become A Sponsor 1')" target="_blank" class="cta cta-default all-caps">Become A Sponsor</a>
         </div>
       </div>
     </div>

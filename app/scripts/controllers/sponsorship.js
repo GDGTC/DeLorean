@@ -8,7 +8,7 @@
  * Controller of the devfestApp
  */
 angular.module('devfestApp')
-  .controller('SponsorshipCtrl', function ($scope, Ref, $firebaseArray, $timeout, $modal, Config) {
+  .controller('SponsorshipCtrl', function ($scope, Ref, $firebaseArray, $timeout, $modal, $window, $location, Config) {
     $scope.site = Config;
     $scope.sponsors = $firebaseArray(Ref.child('sponsors'));
 
@@ -50,7 +50,6 @@ angular.module('devfestApp')
 
     $scope.add = function(sponsor) {
       $scope.sponsors.$add(sponsor);
-      $scope.refresh();
     };
 
     $scope.editSponsor = function(sponsor) {
@@ -59,21 +58,21 @@ angular.module('devfestApp')
 
     $scope.edit = function(sponsor) {
       $scope.sponsors.$save(sponsor);
-      $scope.refresh();
     };
 
     $scope.deleteSponsor = function(sponsor) {
       if (confirm('Are you sure you want to delete this sponsor?')) {
         $scope.sponsors.$remove(sponsor);
-        $scope.refresh();
       }
     };
-  
-    $scope.refresh = function() {
-      $timeout(function() {
-        $route.reload();
-      }, 500);
-    };
+    
+    $scope.$on('$viewContentLoaded', function(event) {
+      $window.ga('send', 'pageview', { page: $location.path() });
+    });
+    
+    $scope.gaClick = function(category, action, label, value) {
+      $window.ga('send', 'event', category, action, label, value);
+    }
   });
 
 /**

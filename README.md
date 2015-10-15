@@ -28,9 +28,19 @@ via the comand line.
       * The GAE SDK can be downloaded from [Google App Engine Downloads](https://developers.google.com/appengine/downloads) page.
       * This project uses the PHP SDK
 
-2. You need a [Firebase](https://www.firebase.com/) account
+2. Create a Firebase account, create a new app, and setup [Firebase auth](https://www.firebase.com/docs/web/guide/user-auth.html) for the logins
 
-    * After you create an account create a project
+    * Enable "Email & Password Authentication" under "Login & Auth"
+    * Set the following rules in "Security & Rules"
+    
+    ```
+    {
+      "rules": {
+        ".read": true,
+        ".write": "auth != null"
+      }
+    }
+    ```
 
 3. Install `yo`, `grunt`, `bower`, `generator-angularfire` and `generator-karma`
 
@@ -63,13 +73,17 @@ via the comand line.
     * Add chapter specific details to meta tags in header
     * Add Google Analytics key on `line: 54`
 
-5. Replace `app/images/background.jpg` with a large photo of your choice. (Your city skyline is always a good option)
+5. Update the `FBURL` constant with your Firebase app name in `app/scripts/angularfire/config.js`
 
-6. Replace `app/images/gdg_group.png` with your chapter's logo.
+6. Replace `app/images/background.jpg` with a large photo of your choice. (Your city skyline is always a good option)
 
-7. Replace `app/images/devfest.png` with your chapter's DevFest logo.
+7. Replace `app/images/gdg_group.png` with your chapter's logo.
 
-8. Update `app/app.yaml` with your Google Cloud Application ID (if planning to host on GAE)
+8. Replace `app/images/devfest.png` with your chapter's DevFest logo.
+
+9. Replace `app/images/venue_1.png` with a photo of your venue. (TODO: add more venue photos & detail section)
+
+10. Update `app/app.yaml` with your Google Cloud Application ID (if planning to host on GAE)
 
 ## Build & development
 
@@ -93,10 +107,38 @@ NOTE: The following deploy process has only been used with the GAE PHP SDK. Also
 
 4. Copy the files from the `dist` directory into the `app` directory you created in step 2
 
-5. Copy the `app.yaml` file from the root project path
+5. Copy the `app.yaml` file from the root project path to `[your projects]/DeLorean/deploy`
 
 6. Open the GAE launcher, right-click and `Add Existing...` to import this project
 
 7. Click the green run button to test the site using a local GAE
 
 8. When ready, click the blue deploy button to upload your site to GAE, and now you have a DevFest site!
+
+## Manage Data
+
+1. Create a login for your GDG chapter
+
+    * Click on the "GDG Login" link in the footer
+    * Click the "Register" button to create an account
+
+2. Turn off registration to protect your site
+
+    * Set `allowRegister` to false in `app/scripts/config/js`
+
+3. Add sponsors (must be logged in)
+
+    * From the home page, click the green "Add Sponsor" button
+    * After adding sponsors, you can edit/delete
+
+4. Add Speakers (must be logged in)
+
+    * From the speakers page, click the green "Add Speaker" button
+    * After adding speakers, you can edit/delete
+
+5. Add sessions (must be logged in)
+
+    * From the schedule page, click the green "Add Sesssion" button
+    * After adding sessions, you can edit/delete
+
+6. To logout, click "GDG Account" in the footer and then logout button
