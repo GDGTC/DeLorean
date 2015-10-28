@@ -24,7 +24,7 @@ angular.module('devfestApp')
       'sponsorURL'    : '', // link to the sponsorship form
       'ticketURL'     : 'https://goo.gl/YNDSnR', // link to buy tickets
       'eventDate'     : '2016-02-06', // ISO formatted YYYY-MM-DD (currently only supports a single day DevFest)
-      'eventStart'    : '09:00:00', // start time
+      'eventStart'    : '08:00:00', // start time
       'eventEnd'      : '16:00:00', // end time
       'sessionLength' : '2700000', // use minutes in milliseconds
       'sessionTracks' : '3', // number of tracks sessions are split into (ie. Mobile, Web, Cloud, etc.)
