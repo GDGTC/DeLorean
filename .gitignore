@@ -5,3 +5,5 @@ deploy
 .tmp
 .sass-cache
 bower_components
+firebase.json
+npm-debug.log
