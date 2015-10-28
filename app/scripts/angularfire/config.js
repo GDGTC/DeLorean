@@ -1,5 +1,5 @@
 angular.module('firebase.config', [])
-  .constant('FBURL', 'https://flying-disc.firebaseio.com')
-  .constant('SIMPLE_LOGIN_PROVIDERS', ['password'])
+  .constant('FBURL', 'https://devfestmn.firebaseio.com')
+  .constant('SIMPLE_LOGIN_PROVIDERS', ['password','google'])
 
   .constant('loginRedirectPath', '/login');
