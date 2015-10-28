@@ -15,15 +15,15 @@ angular.module('devfestApp')
       'allowRegister' : true, // set to false once your "admin" login has been setup to prevent unauthorized account creations
       
       // event details
-      'eventName'     : 'GDG DevFest MN', // typically 'DevFest [place]'
+      'eventName'     : 'DevFestMN', // typically 'DevFest [place]'
       'eventLocation' : 'Shultze Hall, University of St. Thomas', // location of event
       'eventAddress'  : '53 S. 11th St. Minneapolis, MN', // address of event
       'eventURL'      : 'http://devfest.mn', // link to event website (ex. G+, Meetup, Eventbrite, etc)
-      'eventEmail'    : 'devfest@gdgkc.org', // Email where event inquries should go
-      'speakerURL'    : 'https://goo.gl/rEypu0', // link to the 'Call for Papers' form
-      'sponsorURL'    : 'https://goo.gl/n4KoLu', // link to the sponsorship form
+      'eventEmail'    : 'info@devfest.mn', // Email where event inquries should go
+      'speakerURL'    : 'http://goo.gl/forms/F6w1PNQNr7', // link to the 'Call for Papers' form
+      'sponsorURL'    : '', // link to the sponsorship form
       'ticketURL'     : 'https://goo.gl/YNDSnR', // link to buy tickets
-      'eventDate'     : '2016-03-06', // ISO formatted YYYY-MM-DD (currently only supports a single day DevFest)
+      'eventDate'     : '2016-02-06', // ISO formatted YYYY-MM-DD (currently only supports a single day DevFest)
       'eventStart'    : '09:00:00', // start time
       'eventEnd'      : '16:00:00', // end time
       'sessionLength' : '2700000', // use minutes in milliseconds
@@ -31,9 +31,9 @@ angular.module('devfestApp')
       
       // social details
       // Google+ social details are derived from the keys above
-      'twitter'       : 'GDGKansasCity', // Twitter handle
-      'facebook'      : 'GDGKansasCity', // Facebook handle
-      'meetup'        : 'GDG-Kansas-City', // Meetup handle
-      'github'        : 'GDGKansasCity', // GitHub Handle
+      'twitter'       : 'gdgtc', // Twitter handle
+      'facebook'      : 'gdgtwincities', // Facebook handle
+      'meetup'        : 'gdg-tc', // Meetup handle
+      'github'        : 'GDGTC', // GitHub Handle
     };
   });
