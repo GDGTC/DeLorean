@@ -340,7 +340,7 @@ img.desaturate {
 }
 
 .event-hero-info small span {
-	color: #f6a006;
+	/*color: #f6a006;*/
 	margin-right: 20px;
 }
 
@@ -353,7 +353,7 @@ img.desaturate {
 	overflow: hidden;
 	padding: 0;
 	height: 100vh;
-	color: #fff;
+	/*color: #fff;*/
 	background-size: cover !important;
 	background: url(../images/background.jpg) center center no-repeat;
 	background-attachment: fixed !important;
