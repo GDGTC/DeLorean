@@ -12,6 +12,12 @@
     height: 64px;
 }
 
+.sponsor-detail {
+    display: block;
+    margin-left: 24px;
+    font-size: smaller;
+}
+
 .facebook-link a {
   color: #777;
 }
