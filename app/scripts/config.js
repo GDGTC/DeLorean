@@ -21,7 +21,8 @@ angular.module('devfestApp')
       'eventURL'      : 'http://devfest.mn', // link to event website (ex. G+, Meetup, Eventbrite, etc)
       'eventEmail'    : 'info@devfest.mn', // Email where event inquries should go
       'speakerURL'    : 'http://goo.gl/forms/F6w1PNQNr7', // link to the 'Call for Papers' form
-      'sponsorURL'    : '', // link to the sponsorship form
+      'sponsorURL'    : 'https://docs.google.com/forms/d/1tL-ovRrdSCdAENnbkWSiF3OaRlkbmdzvhzNCNs_n9SU/viewform', // link to the sponsorship form
+      'sponsorLevelLinkFromMainPage' : false,
       'ticketURL'     : 'https://goo.gl/YNDSnR', // link to buy tickets
       'eventDate'     : '2016-02-06', // ISO formatted YYYY-MM-DD (currently only supports a single day DevFest)
       'eventStart'    : '08:00:00', // start time
