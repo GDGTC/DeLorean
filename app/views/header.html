@@ -15,9 +15,9 @@
       <div class="collapse navbar-collapse navbar-right" id="devfest-navbar">
         <ul class="nav navbar-nav">
           <li ng-class="{ active: isActive('/')}"><a href="/" data-toggle="collapse" data-target="#devfest-navbar">Home</a></li>
-          <li ng-class="{ active: isActive('/schedule')}"><a href="/schedule" data-toggle="collapse" data-target="#devfest-navbar">Schedule</a></li>
-          <li ng-class="{ active: isActive('/speakers')}"><a href="/speakers" data-toggle="collapse" data-target="#devfest-navbar">Speakers</a></li>
-          <li ng-class="{ active: isActive('/about')}"><a href="/about" data-toggle="collapse" data-target="#devfest-navbar">About</a></li>
+          <li ng-class="{ active: isActive('/schedule')}"><a ng-href="#/schedule" data-toggle="collapse" data-target="#devfest-navbar">Schedule</a></li>
+          <li ng-class="{ active: isActive('/speakers')}"><a ng-href="#/speakers" data-toggle="collapse" data-target="#devfest-navbar">Speakers</a></li>
+          <li ng-class="{ active: isActive('/about')}"><a ng-href="#/about" data-toggle="collapse" data-target="#devfest-navbar">About</a></li>
         </ul>
       </div>
     </div>
