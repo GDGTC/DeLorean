@@ -16,7 +16,7 @@
 	  	<label>Room <input ng-model="newSession.room"/></label>
 	  	<label>Time <input ng-model="newSession.startTime"> - <input ng-model="newSession.endTime"></label>
 	  	<label>Description <input ng-model="newSession.description"></label>
-	  	<button ng-click="create()">Create</button>
+	  	<button ng-click="schedule.$add(newSession);newSession={};">Create</button>
   	</div>
   </div>
 </section>
