@@ -16,6 +16,7 @@ angular.module('devfestApp')
         redirect, showError
       );
     };
+    
 
     $scope.googleLogin = function(){
       var provider = 'google';
