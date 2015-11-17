@@ -1,7 +1,9 @@
 {
   "name": "devfest",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "connect-modrewrite": "^0.8.2"
+  },
   "repository": {},
   "devDependencies": {
     "chalk": "^0.4.0",
