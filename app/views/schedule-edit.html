@@ -1,0 +1,22 @@
+<section id="schedule" class="gray-bg">
+	<style>
+		label {display:block;}
+	</style>
+  <div class="container">
+	  <div ng-repeat="session in schedule">
+	  	<label>Title <input ng-model="session.title"/></label>
+	  	<label>Room <input ng-model="session.room"/> All Rooms? <input type="checkbox" ng-model="session.all"></label>
+	  	<label>Time <input ng-model="session.startTime" style="width:100px;"> - <input ng-model="session.endTime"  style="width:100px;"></label>
+	  	<label>Description <input ng-model="session.description"></label>
+	  	<button ng-click="schedule.$save(session)">Save</button>
+	  	<br/>
+	  </div>
+	  <div><h3>New Session</h3>
+	    	<label>Title <input ng-model="newSession.title"/></label>
+	  	<label>Room <input ng-model="newSession.room"/></label>
+	  	<label>Time <input ng-model="newSession.startTime"> - <input ng-model="newSession.endTime"></label>
+	  	<label>Description <input ng-model="newSession.description"></label>
+	  	<button ng-click="create()">Create</button>
+  	</div>
+  </div>
+</section>

@@ -67,6 +67,10 @@ angular.module('devfestApp')
         templateUrl: 'views/schedule.html',
         controller: 'ScheduleCtrl'
       })
+      .when('/schedule-edit', {
+        templateUrl: 'views/schedule-edit.html',
+        controller: 'ScheduleEditCtrl'
+      })
       .when('/speakers', {
         templateUrl: 'views/speakers.html',
         controller: 'SpeakersCtrl'
