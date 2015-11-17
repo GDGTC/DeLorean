@@ -6,7 +6,11 @@
 	  <div ng-repeat="session in schedule">
 	  	<label>Title <input ng-model="session.title"/></label>
 	  	<label>Room <input ng-model="session.room"/> All Rooms? <input type="checkbox" ng-model="session.all"></label>
-	  	<label>Time <input ng-model="session.startTime" style="width:100px;"> - <input ng-model="session.endTime"  style="width:100px;"></label>
+	  	<label>Time
+	  	<input ng-model="session.startTime" style="width:215px;" type="text"
+	  		> -
+	  	<input ng-model="session.endTime" style="width:215px;" type="text"
+	  		></label>
 	  	<label>Description <input ng-model="session.description"></label>
 	  	<button ng-click="schedule.$save(session)">Save</button>
 	  	<br/>
