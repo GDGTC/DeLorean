@@ -13,33 +13,8 @@ angular.module('devfestApp')
     $scope.messages = [];
     var profile = $firebaseObject(Ref.child('users/'+user.uid));
     profile.$bindTo($scope, 'profile');
-    
-    $scope.changePassword = function(oldPass, newPass, confirm) {
-      $scope.err = null;
-      if( !oldPass || !newPass ) {
-        error('Please enter all fields');
-      }
-      else if( newPass !== confirm ) {
-        error('Passwords do not match');
-      }
-      else {
-        Auth.$changePassword({email: profile.email, oldPassword: oldPass, newPassword: newPass})
-          .then(function() {
-            success('Password changed');
-          }, error);
-      }
-    };
 
-    $scope.changeEmail = function(pass, newEmail) {
-      $scope.err = null;
-      Auth.$changeEmail({password: pass, newEmail: newEmail, oldEmail: profile.email})
-        .then(function() {
-          profile.email = newEmail;
-          profile.$save();
-          success('Email changed');
-        })
-        .catch(error);
-    };
+    console.log(user);
 
     function error(err) {
       alert(err, 'danger');

@@ -17,6 +17,20 @@ angular.module('devfestApp')
       );
     };
 
+    $scope.googleLogin = function(){
+      var provider = 'google';
+      var scope = {scope:'email'};
+      console.log('Logging in Google.');
+      Auth.$authWithOAuthPopup(provider, scope).then(function (authObject) {
+          // Handle success
+          console.log(authObject);
+          redirect();
+
+      }, function (error) {
+          // Handle error
+      });
+    };
+
     $scope.createAccount = function(email, pass, confirm) {
       $scope.err = null;
       if( !pass ) {
