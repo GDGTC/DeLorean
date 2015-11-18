@@ -14,16 +14,30 @@ angular.module('devfestApp')
       var scope = {scope:'email'};
       console.log('Logging in Google.');
       Auth.$authWithOAuthPopup(provider, scope).then(function (authObject) {
-          // Handle success
-          console.log(authObject);
-          var user = $firebaseObject(Ref.child('users/'+authObject.uid));
-          user.$save(authObject);
-          redirect();
+        // Handle success
+        console.log(authObject);
+        createProfile(authObject);
+        redirect();
 
       }, function (error) {
+        // Handle error
         console.log(error);
-          // Handle error
       });
+    };
+
+   function createProfile(user) {
+      var ref = Ref.child('users/'+ user.uid), def = $q.defer();
+      ref.set(user, function(err) {
+        $timeout(function() {
+          if( err ) {
+            def.reject(err);
+          }
+          else {
+            def.resolve(ref);
+          }
+        });
+      });
+      return def.promise;
     };
   
     function redirect() {
