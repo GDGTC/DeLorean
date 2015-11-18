@@ -7,7 +7,7 @@
  * Manages authentication to any active providers.
  */
 angular.module('devfestApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $timeout, Config) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $firebaseObject, $timeout, Config) {
 
     $scope.googleLogin = function(){
       var provider = 'google';
@@ -16,9 +16,12 @@ angular.module('devfestApp')
       Auth.$authWithOAuthPopup(provider, scope).then(function (authObject) {
           // Handle success
           console.log(authObject);
+          var user = $firebaseObject(Ref.child('users/'+authObject.uid));
+          user.$save(authObject);
           redirect();
 
       }, function (error) {
+        console.log(error);
           // Handle error
       });
     };
