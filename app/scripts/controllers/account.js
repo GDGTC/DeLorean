@@ -11,8 +11,10 @@ angular.module('devfestApp')
     $scope.user = user;
     $scope.logout = function() { Auth.$unauth(); };
     $scope.messages = [];
-    var profile = $firebaseObject(Ref.child('users/'+user.uid));
-    profile.$bindTo($scope, 'profile');
+    $scope.profile = $firebaseObject(Ref.child('users/'+user.uid));
+//    profile.$bindTo($scope, 'profile');
+    $scope.profile.$save(user);
+//    profile.$save(user);
 
     console.log(user);
 
