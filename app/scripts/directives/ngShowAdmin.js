@@ -24,7 +24,7 @@ angular.module('devfestApp')
             el.toggleClass('ng-cloak', !isAdmin);
             // console.log(user);
             if(user){
-              var inAdmin = new $firebaseObject(Ref.child("admin/"+user.uid));
+              var inAdmin = $firebaseObject(Ref.child("admin/"+user.uid));
               // console.log('admin object');
               // console.log(inAdmin);
               inAdmin.$loaded().then(function(){
