@@ -6,7 +6,7 @@
           <p class="section-title">Meet the Speakers</p>
           <h2 class="section-heading">
             <!-- Add sessions (Auth required) -->
-            <a ng-show-auth="" class="btn btn-sm btn-success" ng-click="openFormModal()">Add Speaker</a>
+            <a ng-show-admin="" class="btn btn-sm btn-success" ng-click="openFormModal()">Add Speaker</a>
           </h2>
         </div>
       </div>
@@ -131,9 +131,9 @@
         </li>
       </ul>
       <!-- Edit/Delete a speaker (Auth required) -->
-      <a ng-show-auth="" class="btn btn-sm btn-primary" ng-click="editSpeaker(speaker)">Edit</a>
-      <a ng-show-auth="" class="btn btn-sm btn-danger" ng-click="deleteSpeaker(speaker)">Delete</a>
-      <button ng-show-auth="" class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
+      <a ng-show-admin="" class="btn btn-sm btn-primary" ng-click="editSpeaker(speaker)">Edit</a>
+      <a ng-show-admin="" class="btn btn-sm btn-danger" ng-click="deleteSpeaker(speaker)">Delete</a>
+      <button ng-show-admin="" class="btn btn-default" type="button" ng-click="cancel()">Cancel</button>
     </div>
   </script>
 </section>

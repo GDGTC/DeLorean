@@ -7,7 +7,7 @@
  * to be initialized so there is no initial flashing of incorrect state.
  */
 angular.module('devfestApp')
-  .directive('ngShowAdmin', ['Auth', 'Ref', '$timeout', function (Auth, Ref, $timeout) {
+  .directive('ngShowAdmin', ['Auth', 'Ref', '$firebaseObject', '$timeout', function (Auth, Ref, $firebaseObject, $timeout) {
     'use strict';
 
     return {
@@ -21,13 +21,21 @@ angular.module('devfestApp')
           $timeout(function () {
             var user = Auth.$getAuth();
             var isAdmin = false;
-            console.log(user);
-            if(user){
-              var inAdmin = Ref.child("admins/"+user.uid);
-              console.log(inAdmin);
-              if(inAdmin){ isAdmin = true;}
-            }
             el.toggleClass('ng-cloak', !isAdmin);
+            // console.log(user);
+            if(user){
+              var inAdmin = new $firebaseObject(Ref.child("admin/"+user.uid));
+              // console.log('admin object');
+              // console.log(inAdmin);
+              inAdmin.$loaded().then(function(){
+                if(inAdmin.$value){ 
+                  isAdmin = true;
+                  // console.log("ADMIN ADMIN ADMIN");
+                  // console.log('isAdmin: '+isAdmin);
+                  el.toggleClass('ng-cloak', !isAdmin);
+                }
+              });
+            }
           }, 0);
         }
 
