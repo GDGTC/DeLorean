@@ -18,8 +18,11 @@
 	<table>
 		<tr><th>Start Time</th><th ng-repeat="(id,name) in rooms">{{name}}</th></tr>
 	
-		<tr ng-repeat="(time,data) in timeSlots"><td>{{time}}</td>
-			<td colspan="5" ng-hide="data.length > 0">{{data.title}}</td><td ng-show="data.length > 0" ng-repeat="session in data">{{session.title}}</td></tr>
+		<tr ng-repeat="(timeid,time) in times">
+			<td>{{time}}</td>
+<!-- 			<td colspan="5" ng-hide="data.length > 1">{{data[0].title}}</td>
+ -->			<td ng-repeat="(roomid,name) in rooms"> {{timeSlots[timeid][roomOrder.indexOf(roomid)].title}}</td>
+		</tr>
 	</table>
   </div>
   
