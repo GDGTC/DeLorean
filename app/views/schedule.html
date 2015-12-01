@@ -4,17 +4,33 @@
 	</style>
   <div class="container">
   <div class="container centered">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 centered">
-        <p class="section-title">Schedule</p>
-        <h2 class="section-heading">
-          Multiple tracks<br />multiple rooms<br />100% awesome<br />
-          <!-- Add sessions (Auth required) -->
-          <a ng-show-admin="" class="btn btn-sm btn-success"  ng-href="/schedule-edit" >Edit Schedule</a>
-<!--           <a ng-show-admin="" class="btn btn-sm btn-success" ng-click="openFormModal()">Add Sponsor</a>
- -->        </h2>
-      </div>
+	<div class="row">
+	  <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 centered">
+		<p class="section-title">Schedule</p>
+		<h2 class="section-heading">
+		  Multiple tracks<br />multiple rooms<br />100% awesome<br />
+		  <!-- Add sessions (Auth required) -->
+		  <a ng-show-admin="" class="btn btn-sm btn-success"  ng-href="/schedule-edit" >Edit Schedule</a>
+<!--           <a ng-show-admin="" class="btn btn-sm btn-success" ng-click="openFormModal()">Add Sponsor</a>  --> 
+	   </h2>
+	  </div>
   </div>
+ <div class='row panel-default' ng-repeat="(timeid,time) in times">
+	 <div class='panel-heading'><strong>{{time}}</strong></div>
+ 		<div class='panel-body'>
+
+	 		<div id='session{{id}}'  class='col-md-2 design {{css}}' onClick='ShowLessonPopup({{id}})' ng-repeat="(roomid,name) in rooms">
+	 			<div class='session'>
+	 				{{timeSlots[timeid][roomOrder.indexOf(roomid)].title}}<hr />
+	 				<div class='roomline'><span class='roomspan'>{{name}}</span></div>
+	 				{{timeSlots[timeid][roomOrder.indexOf(roomid)].title}}
+	 			</div>
+	 		</div>
+
+		</div>
+	</div>
+  </div>
+
 	<table>
 		<tr><th>Start Time</th><th ng-repeat="(id,name) in rooms">{{name}}</th></tr>
 	
