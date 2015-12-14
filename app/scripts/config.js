@@ -16,8 +16,8 @@ angular.module('devfestApp')
       
       // event details
       'eventName'     : 'DevFestMN', // typically 'DevFest [place]'
-      'eventLocation' : 'Shultze Hall, University of St. Thomas', // location of event
-      'eventAddress'  : '53 S. 11th St. Minneapolis, MN', // address of event
+      'eventLocation' : 'Schulze Hall, University of St. Thomas', // location of event
+      'eventAddress'  : '46 S. 11th St. Minneapolis, MN', // address of event
       'eventURL'      : 'http://devfest.mn', // link to event website (ex. G+, Meetup, Eventbrite, etc)
       'eventEmail'    : 'info@devfest.mn', // Email where event inquries should go
       'speakerURL'    : 'http://goo.gl/forms/F6w1PNQNr7', // link to the 'Call for Papers' form
