@@ -9,6 +9,7 @@
  */
 angular.module('devfestApp')
   .controller('ScheduleEditCtrl', function ($scope, Ref, $firebaseArray, $timeout, $modal, $window, $location, Config) {
-    $scope.schedule = $firebaseArray(Ref.child('schedule'));
+    $scope.schedule = $firebaseArray(Ref.child('devfest2016').child('schedule'));
+    $scope.speakers = $firebaseArray(Ref.child('devfest2016').child('speakers'));
     
 });

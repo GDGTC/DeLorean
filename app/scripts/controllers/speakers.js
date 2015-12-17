@@ -10,7 +10,7 @@
 angular.module('devfestApp')
   .controller('SpeakersCtrl', function ($scope, Ref, $firebaseArray, $timeout, $modal, $window, $location, Config) {
     $scope.site = Config;
-    $scope.speakers = $firebaseArray(Ref.child('speakers'));
+    $scope.speakers = $firebaseArray(Ref.child('devfest2016').child('speakers'));
 
     $scope.openFormModal = function(speaker) {
       $scope.speaker = speaker;
