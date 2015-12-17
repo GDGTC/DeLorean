@@ -23,12 +23,12 @@ angular.module('devfestApp')
       'speakerURL'    : 'http://goo.gl/forms/F6w1PNQNr7', // link to the 'Call for Papers' form
       'sponsorURL'    : 'https://docs.google.com/forms/d/1tL-ovRrdSCdAENnbkWSiF3OaRlkbmdzvhzNCNs_n9SU/viewform', // link to the sponsorship form
       'sponsorLevelLinkFromMainPage' : false,
-      'ticketURL'     : 'https://goo.gl/YNDSnR', // link to buy tickets
+      'ticketURL'     : 'https://www.eventbrite.com/e/devfestmn-2016-a-google-developer-group-twin-cities-event-tickets-18723384146', // link to buy tickets
       'eventDate'     : '2016-02-06', // ISO formatted YYYY-MM-DD (currently only supports a single day DevFest)
       'eventStart'    : '08:00:00', // start time
       'eventEnd'      : '16:00:00', // end time
       'sessionLength' : '2700000', // use minutes in milliseconds
-      'sessionTracks' : '5', // number of tracks sessions are split into (ie. Mobile, Web, Cloud, etc.)
+      'sessionTracks' : '6', // number of tracks sessions are split into (ie. Mobile, Web, Cloud, etc.)
       
       // social details
       // Google+ social details are derived from the keys above
