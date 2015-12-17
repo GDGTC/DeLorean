@@ -12,17 +12,17 @@
       <div class="clearfix"></div>
       <ul ng-cloak ng-if="speakers.length > 0" id="speaker_grid">
         <li class="col-lg-3 col-md-3 col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3 speaker-item" ng-repeat="speaker in speakers | orderBy: 'name'">
-          <div class="speaker-item-content" style="cursor: pointer;" ng-click="openInfoModal(speaker)">
-            <span ng-show="speaker.image">
-	            <img ng-src="{{ speaker.image }}" alt="{{ speaker.name }}" />
-	            <div class="speaker-info centered">
-	              <h6>{{ speaker.name }}<br /><small>{{ speaker.company }}</small></h6>
-	              <small>Click for<br />more info</small>
+          <div class="speaker-item-content" style="cursor: pointer;background-color:#171212;color:white;" ng-click="openInfoModal(speaker)">
+            <div ng-show="speaker.image" >
+	            <div style="height:150px;background-image:url({{ speaker.image }});background-size: cover;background-position:center;">
 	            </div>
-	        </span>
-        	<div style="background-color:#171212;color:white;padding:16px;height:150px;" ng-hide="speaker.image">
+	            <!--<img ng-src="{{ speaker.image }}" alt="{{ speaker.name }}" style="" />-->
+	            <div style="height:75px;display:flex;align-items:center;justify-content:center;">
+	              <h6 style="color:white;margin-bottom:0px;">{{ speaker.name }}<br /><small>{{ speaker.company }}</small></h6>
+	            </div>
+	        </div>
+        	<div style="padding:16px;height:225px;color:white;display:flex;align-items:center;" ng-hide="speaker.image">
               <h6 style="color:white">{{ speaker.name }}<br /><small>{{ speaker.company }}</small></h6>
-              <small>Click for<br />more info</small>
             </div>
           </div>
         </li>
