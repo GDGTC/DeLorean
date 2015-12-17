@@ -23,7 +23,7 @@ angular.module('devfestApp')
       'speakerURL'    : 'http://goo.gl/forms/F6w1PNQNr7', // link to the 'Call for Papers' form
       'sponsorURL'    : 'https://docs.google.com/forms/d/1tL-ovRrdSCdAENnbkWSiF3OaRlkbmdzvhzNCNs_n9SU/viewform', // link to the sponsorship form
       'sponsorLevelLinkFromMainPage' : false,
-      'ticketURL'     : 'https://goo.gl/YNDSnR', // link to buy tickets
+      'ticketURL'     : 'https://www.eventbrite.com/myevent?eid=18723384146', // link to buy tickets
       'eventDate'     : '2016-02-06', // ISO formatted YYYY-MM-DD (currently only supports a single day DevFest)
       'eventStart'    : '08:00:00', // start time
       'eventEnd'      : '16:00:00', // end time
