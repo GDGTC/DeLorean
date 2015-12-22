@@ -3,21 +3,37 @@
 		label {display:block;}
 		label span {display:block;}
 	</style>
+	<datalist id="rooms">
+		<option ng-repeat="(room,name) in rooms" ng-value="room">{{name}}</option>
+
+	</datalist>
 	<div class="container">
-		<div ng-repeat="session in schedule">
+		<div ng-repeat="session in schedule | orderBy:['all', 'room','startTime'] " style="border:1px solid #DDD;padding:16px;">
 			<label><span>Title</span> <input ng-model="session.title"/></label>
-			<label><span>Speaker</span>
-			{{session.speakers}}
-				<select ng-model="session.speakers['one']" ng-options="speaker.name for speaker in speakers track by speaker.$id" ng-change="sessoin.speakers['one'] = speaker.$id">
+			<label><span>Speakers</span>
+			<div ng-repeat="id in session.speakers" style="font-style:italic;">
+			{{speakersAsObject[id].name}} 
+			<!-- not enough bang for buck to complete this (<a ng-click="removeSpeaker(session,id)" style="color:red;">X</a>)-->
+			</div>
+			<div ng-hide="newSpeakerToggle[id]" ng-click="newSpeakerToggle[id] = true;">+</div>
+			<div ng-show="newSpeakerToggle[id]">
+				<select ng-model="newSpeaker">
+					<option ng-repeat="speaker in speakers" ng-value="speaker.$id">
+						{{speaker.name}}
+					</option>
+					<option>Add a new speaker</option>
+				
 				</select>
+				<button ng-click="addSpeaker(session, newSpeaker);newSpeakerToggle[id]=false;">Add</button>
+			</div>
 			</label>
-			<label><span>Room</span> <input ng-model="session.room"/> All Rooms? <input type="checkbox" ng-model="session.all"></label>
+			<label><span>Room</span> <input ng-model="session.room" list="rooms"/> All Rooms? <input type="checkbox" ng-model="session.all"></label>
 			<label><span>Time</span>
 				<!-- I, Stephen Fluin, of sound mind and body do hereby
 				commit this programming heresy in the name of short term
 				speed and lunacy. -->
 
-				<select ng-model="session.startTime">
+				<select ng-model="session.startTime" ng-change="console.log(session.startTime);">
 					<option value="2016-02-06T14:00Z">8AM</option>
 					<option value="2016-02-06T15:00Z">9AM</option>
 					<option value="2016-02-06T16:00Z">10AM</option>
@@ -46,12 +62,12 @@
 				</select>
 				<label><span>Description</span> <input ng-model="session.description"></label>
 				<button ng-click="schedule.$save(session);">Save</button>
-				<button ng-click="schedule.$delete(session);">Delete</button>
+				<button ng-click="schedule.$remove(session);">Delete</button>
 				<br/>
 			</div>
 			<div><h3>New Session</h3>
 				<label><span>Title</span> <input ng-model="newSession.title"/></label>
-				<label><span>Room</span> <input ng-model="newSession.room"/></label>
+				<label><span>Room</span> <input ng-model="newSession.room" list="rooms"/></label>
 
 				<select ng-model="newSession.startTime">
 					<option value="2016-02-06T14:00Z">8AM</option>
