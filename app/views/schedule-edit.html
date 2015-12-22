@@ -6,10 +6,15 @@
 	<div class="container">
 		<div ng-repeat="session in schedule">
 			<label><span>Title</span> <input ng-model="session.title"/></label>
+			<label><span>Speaker</span>
+			{{session.speakers}}
+				<select ng-model="session.speakers['one']" ng-options="speaker.name for speaker in speakers track by speaker.$id" ng-change="sessoin.speakers['one'] = speaker.$id">
+				</select>
+			</label>
 			<label><span>Room</span> <input ng-model="session.room"/> All Rooms? <input type="checkbox" ng-model="session.all"></label>
 			<label><span>Time</span>
 				<!-- I, Stephen Fluin, of sound mind and body do hereby
-				commit this programming heresy in the name of short term 
+				commit this programming heresy in the name of short term
 				speed and lunacy. -->
 
 				<select ng-model="session.startTime">
@@ -25,7 +30,7 @@
 					<option value="2016-02-06T23:00Z">5PM</option>
 					<option value="2016-02-07T00:00Z">6PM</option>
 				</select>
-				 - 
+				 -
 				 <select ng-model="session.endTime">
 					<option value="2016-02-06T14:00Z">8AM</option>
 					<option value="2016-02-06T15:00Z">9AM</option>
@@ -40,7 +45,8 @@
 					<option value="2016-02-07T00:00Z">6PM</option>
 				</select>
 				<label><span>Description</span> <input ng-model="session.description"></label>
-				<button ng-click="schedule.$save(session)">Save</button>
+				<button ng-click="schedule.$save(session);">Save</button>
+				<button ng-click="schedule.$delete(session);">Delete</button>
 				<br/>
 			</div>
 			<div><h3>New Session</h3>
@@ -60,7 +66,7 @@
 					<option value="2016-02-06T23:00Z">5PM</option>
 					<option value="2016-02-07T00:00Z">6PM</option>
 				</select>
-				 - 
+				 -
 				 <select ng-model="newSession.endTime">
 					<option value="2016-02-06T14:00Z">8AM</option>
 					<option value="2016-02-06T15:00Z">9AM</option>
