@@ -679,6 +679,10 @@ p.section-title:after {
     font-size: 12px;
     text-transform: none;
 }
+.session {
+	text-align: left;
+	font-size:.85em;
+}
 
 .session-wrapper {
 	background: #fff;
@@ -877,6 +881,29 @@ ul.speaker-social li a {
 	line-height: .8em;
 }
 
+.showMobile {
+	display: none;
+}
+
+.android {
+	background-color: #D9EAD3;
+}
+.design {
+	background-color: #CFE2F3;
+}
+.chromeweb {
+	background-color: #FFF2CC;
+}
+.cloud  {
+	background-color: #F3F3F3;
+}
+.iot  {
+	background-color: #EAD1DC;
+}
+.reach  {
+	background-color: #E6B8AF;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
@@ -893,6 +920,9 @@ ul.speaker-social li a {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+  }
+  .session {
+  	padding: 16px;
   }
 }
 
@@ -941,5 +971,15 @@ ul.speaker-social li a {
 
   .collapse.in{
     display: block !important;
+  }
+  
+  .hideMobile {
+  	display: none;
+  }
+  .session {
+  	border:1px solid #DCDCDC;
+  	padding:16px;
+  	text-align:center;
+  	font-size:1em;
   }
 }

@@ -21,20 +21,24 @@ angular.module('devfestApp')
   .controller('ScheduleCtrl', function ($scope, Ref, $firebaseArray, $firebaseObject, $timeout, $modal, $window, $location, Config) {
     $scope.schedule = $firebaseArray(Ref.child('devfest2016').child('schedule'));
     $scope.speakersAsObject = $firebaseObject(Ref.child('devfest2016').child('speakers'));
+    
     $scope.rooms = rooms;
     $scope.roomOrder = roomOrder;
     //$scope.times = times;
 //    $scope.timeslottimes = [];
 
-	// I hate timezones. - Stephen 2015-12-22 11:48 GMT -6 
+	// I hate timezones. - Stephen 2015-12-22 11:48 GMT -6
 
     // Timezones suck. All DB dates are in UTC
     var everythingStart = new Date(Date.UTC(2016,2,6,14,0,0));
 
 
 	var unwatch = $scope.schedule.$watch(function() {
+		/**
+		 * We really need to fix this! This runs n times for when we load n items
+		 */
   		console.log("data changed!");
-  		console.log($scope.schedule);
+  		//console.log($scope.schedule);
 
   		var p, prettySchedule;
 
@@ -42,7 +46,7 @@ angular.module('devfestApp')
   		// First let's make an array of objects for our time slots
   		p = {};
   		for (var i = 8; i <= 17; i++) {
-  			console.log("intializing " + (i) + "h");
+  			//console.log("intializing " + (i) + "h");
   			p[i] = {all:[]};
   			for (var room in rooms) {
   				p[i][room] = [];
@@ -67,7 +71,34 @@ angular.module('devfestApp')
   		$scope.prettySchedule = p;
 
 	});
+	
+	$scope.openFormModal = function(session) {
+		console.log("Modal is now open with ",session);
+		$scope.session = session;
+		var modalInstance = $modal.open({
+		  animation: true,
+		  templateUrl: 'modalSessionView.html',
+		  controller: 'SessionModalCtrl',
+		  resolve: {
+		    session: function() {
+		      return $scope.session;
+		    },
+		    speakersAsObject: function() {
+		    	return $scope.speakersAsObject;
+		    }
+		  }
+		});
+		modalInstance.result.then(function(results) {
+		  if (results.action === 'add') {
+		    $scope.add(results.session);
+		  } else if (results.action === 'edit') {
+		    $scope.edit(results.session);
+		  }
+		});
+	};
 });
+
+
 
 
 /**
@@ -82,3 +113,49 @@ Let's make the data look like
 }]
 
 */
+
+
+/**
+ * @ngdoc function
+ * @name devfestApp.controller:SessionModalCtrl
+ * @description
+ * # SessionModalCtrl
+ * Controller of the devfestApp
+ */
+angular.module('devfestApp')
+  .controller('SessionModalCtrl', function ($scope, $modalInstance, session, speakersAsObject) {
+    $scope.session = session;
+    $scope.speakersAsObject = speakersAsObject;
+    $scope.err = null;
+    
+    $scope.saveSession = function(session) {
+      if (session && session.$id) {
+        $modalInstance.close({
+          'action': 'edit',
+          'session': session
+        });
+      } else if (session) {
+        $modalInstance.close({
+          'action': 'add',
+          'session': session
+        });
+      } else {
+        $scope.err = 'Please fill out the form or click Cancel to close.';
+      }
+    };
+   
+    $scope.cancel = function () {
+      $modalInstance.dismiss('cancel');
+    };
+    
+     $scope.rooms = {
+		"auditorium":"Main Auditorium",
+		"smallauditorium": "Small Auditorium",
+		"lab": "Laboratory Classroom",
+		"classroom1": "Classroom 1",
+		"classroom2": "Classroom 2",
+		"classroom3": "Classroom 3",
+		"cafeteria": "Cafeteria"};
+});
+  
+  

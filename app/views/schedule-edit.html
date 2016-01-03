@@ -12,7 +12,7 @@
 			<label><span>Title</span> <input ng-model="session.title"/></label>
 			<label><span>Speakers</span>
 			<div ng-repeat="id in session.speakers" style="font-style:italic;">
-			{{speakersAsObject[id].name}} 
+			{{speakersAsObject[id].name}}
 			<!-- not enough bang for buck to complete this (<a ng-click="removeSpeaker(session,id)" style="color:red;">X</a>)-->
 			</div>
 			<div ng-hide="newSpeakerToggle[id]" ng-click="newSpeakerToggle[id] = true;">+</div>
@@ -60,7 +60,9 @@
 					<option value="2016-02-06T23:00Z">5PM</option>
 					<option value="2016-02-07T00:00Z">6PM</option>
 				</select>
+				</label>
 				<label><span>Description</span> <input ng-model="session.description"></label>
+				<label><span>Category</span> <input ng-model="session.category" placeholder="{{categories}}"></label>
 				<button ng-click="schedule.$save(session);">Save</button>
 				<button ng-click="schedule.$remove(session);">Delete</button>
 				<br/>

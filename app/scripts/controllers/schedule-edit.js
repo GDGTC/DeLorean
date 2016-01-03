@@ -26,5 +26,7 @@ angular.module('devfestApp')
 	"classroom2": "Classroom 2",
 	"classroom3": "Classroom 3",
 	"cafeteria": "Cafeteria"};
+	
+	$scope.categories = "android, chromeweb, design, cloud, iot, reach";
     
 });

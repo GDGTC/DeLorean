@@ -9,41 +9,39 @@
 			<p class="section-title">Schedule</p>
 			<h2 class="section-heading">
 			  Android, Design, Chrome & Web, Cloud, IoT, Reach<br />
-			  6 Tracks<br />
-			  100% awesome<br />
-			  Schedule Coming Soon
 			  <!-- Add sessions (Auth required) -->
 			  <a ng-show-admin="" class="btn btn-sm btn-success"  ng-href="/schedule-edit" >Edit Schedule</a>
-	<!--           <a ng-show-admin="" class="btn btn-sm btn-success" ng-click="openFormModal()">Add Sponsor</a>  -->
+	<!--         <a ng-show-admin="" class="btn btn-sm btn-success" ng-click="openFormModal()">Add Sponsor</a>  -->
 		   </h2>
 		  </div>
 	  </div>
 	  <!-- Need this header if not mobile -->
-	 <div class="row" ng-show-admin="">
+	 <div class="row hideMobile" ng-show-admin="">
 	 	<div class="col-md-2" ng-repeat="(roomid,name) in rooms">{{name}}</div>
 	 </div>
 
 	 <div class='row panel-default' ng-repeat="(timeid,time) in prettySchedule" ng-show-admin="">
-		 <div class='panel-heading'><strong>{{timeid}}</strong></div>
+		 <div class='panel-heading'><strong>{{'2016-02-06T' + (timeid > 9 ? timeid : '0' + timeid) +  ':00-06:00' | date : "h:mm a"}}</strong></div>
 	 		<div class='panel-body'>
 	
 				<!-- All Attendee Sessions -->
-				<div class="col-md-12" ng-repeat="session in time.all">
-					{{session.title}}
+				<div class="col-md-12" ng-repeat="session in time.all" ng-click="openFormModal(session)">
+					<strong>{{session.title}}</strong>
 	 				<span ng-repeat="speakerId in session.speakers" ng-hide='session.speakers.length > 0'>
 	 					<br/>{{speakersAsObject[speakerId].name}}
 	 				</span><br/>
 	 				<span ng-show="rooms[session.room]">{{rooms[session.room]}}</span>
 	 				<span ng-hide="rooms[session.room]">{{session.room}}</span>
 				</div>
-		 		<div id='session{{id}}'  class='col-md-2 design {{css}}' ng-repeat="(roomId,roomName) in rooms">
+		 		<div class='col-md-2' style="padding:0" ng-repeat="(roomId,roomName) in rooms">
 		 			<!-- ng-click='ShowLessonPopup({{id}})'-->
-		 			<div ng-repeat="session in time[roomId]">
-			 			<div class='session'>
+		 			<div ng-repeat="session in time[roomId]" ng-click="openFormModal(session)">
+			 			<div class='session' ng-class="session.category">
 			 				<strong>{{session.title}}</strong><br/>
 			 				<span ng-repeat="speakerId in session.speakers">
 			 					{{speakersAsObject[speakerId].name}}
 			 				</span>
+			 				<div class="showMobile"><span ng-show="rooms[session.room]">{{rooms[session.room]}}</span></div>
 			 			</div>
 			 		</div>
 		 		</div>
@@ -51,5 +49,36 @@
 			</div>
 		</div>
 	  </div>
-
+	</div>
+	<script type="text/ng-template" id="modalSessionView.html">
+		<div class="modal-header">
+			<button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h3 class="modal-title">{{ session.title ? session.title : 'Other Session' }} Session</h3>
+		</div>
+		<div class="modal-body">
+			<form role="form">
+			<div class="form-group">
+				<label for="room">Room:</label>
+				{{rooms[session.room]}}
+			</div>
+			<div class="form-group">
+				<label for="time">Time:</label>
+				{{session.startTime | date : 'h:mm a'}} - {{session.endTime | date : 'h:mm a'}}
+			</div>
+			<div class="form-group" ng-show="session.speakers">
+				<label for="speaker">Speaker:</label>
+				<div ng-repeat="id in session.speakers" style="font-style:italic;">
+					{{speakersAsObject[id].name}}
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="description">Description:</label>
+				<div>{{session.description}}</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<p ng-show="err" class="bg-danger">{{ err }}</p>
+			<button class="btn btn-default" type="button" ng-click="cancel()">back</button>
+		</div>
+	</script>
 </section>
