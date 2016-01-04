@@ -1,0 +1,30 @@
+<div class="modal-header">
+	<button type="button" class="close" ng-click="cancel()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	<h3 class="modal-title">{{ session.title ? session.title : 'Other Session' }}</h3>
+</div>
+<div class="modal-body">
+	<form role="form">
+	<div class="form-group">
+		<label for="room">Room:</label>
+		{{rooms[session.room]}}
+	</div>
+	<div class="form-group">
+		<label for="time">Time:</label>
+		{{session.startTime | date : 'h:mm a'}} - {{session.endTime | date : 'h:mm a'}}
+	</div>
+	<div class="form-group" ng-show="session.speakers">
+		<label for="speaker">Speaker:</label>
+		<div ng-repeat="id in session.speakers" style="font-style:italic;">
+			{{speakersAsObject[id].name}}
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="description">Description:</label>
+		<div>{{session.description}}</div>
+	</div>
+	</form>
+</div>
+<div class="modal-footer">
+	<p ng-show="err" class="bg-danger">{{ err }}</p>
+	<button class="btn btn-default" type="button" ng-click="cancel()">back</button>
+</div>

@@ -13,6 +13,7 @@ angular.module('devfestApp', [
     'ngCookies',
     'ngResource',
     'ngRoute',
+    'ui.router',
     'ngSanitize',
     'ngTouch',
     'firebase',

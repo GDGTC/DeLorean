@@ -13,12 +13,12 @@
   <!-- social: Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@gdgtc">
-  <meta name="twitter:title" content="GDG DevFest MN &bull; Feb 6th">
+  <meta name="twitter:title" content="DevFestMN &bull; Feb 6th">
   <meta name="twitter:description" content="The largest local Google tech conference crafted for you by your local GDG community! All about Android, Web, and Cloud from local & world experts!">
   <meta name="twitter:image:src" content="https://raw.githubusercontent.com/GDGTC/DeLorean/master/app/images/devfest.png">
   <!-- social: Facebook / Open Graph -->
-  <meta property="og:title" content="GDG DevFest MN 2016 &bull; Feburary 6th">
-  <meta property="og:site_name" content="GDG DevFest MN 2016 &bull; Feburary 6th">
+  <meta property="og:title" content="GDG DevFestMN 2016 &bull; Feburary 6th">
+  <meta property="og:site_name" content="GDG DevFestMN 2016 &bull; Feburary 6th">
   <meta property="og:type" content="website">
   <meta property="og:url" content="http://devfestmn.eventbrite.com/">
   <meta property="og:image" content="https://raw.githubusercontent.com/GDGTC/DeLorean/master/app/images/devfest.png">
@@ -27,7 +27,6 @@
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css" />
-  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
   <!-- endbower -->
   <!-- endbuild -->
   <!-- build:css(.tmp) styles/main.css -->
@@ -41,7 +40,7 @@
 
   <!-- Add your site or application content here -->
   <div ng-include="'views/header.html'"></div>
-  <div ng-view="" autoscroll="true"></div>
+  <div ui-view autoscroll="true"></div>
   <div ng-include="'views/footer.html'"></div>
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -66,11 +65,13 @@
   <script src="bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="bower_components/angular-touch/angular-touch.js"></script>
   <script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
   <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 

@@ -24,8 +24,6 @@ angular.module('devfestApp')
     
     $scope.rooms = rooms;
     $scope.roomOrder = roomOrder;
-    //$scope.times = times;
-//    $scope.timeslottimes = [];
 
 	// I hate timezones. - Stephen 2015-12-22 11:48 GMT -6
 
@@ -40,21 +38,20 @@ angular.module('devfestApp')
   		console.log("data changed!");
   		//console.log($scope.schedule);
 
-  		var p, prettySchedule;
+  		var i, p, prettySchedule;
 
 
   		// First let's make an array of objects for our time slots
   		p = {};
-  		for (var i = 8; i <= 17; i++) {
-  			//console.log("intializing " + (i) + "h");
+  		for (i = 8; i <= 17; i++) {
   			p[i] = {all:[]};
   			for (var room in rooms) {
   				p[i][room] = [];
-  			};
-  		};
+  			}
+  		}
 
   		// Now let's put all of our schedule items into their time slots
-  		for (var i = $scope.schedule.length - 1; i >= 0; i--) {
+  		for (i = $scope.schedule.length - 1; i >= 0; i--) {
   			var session = $scope.schedule[i];
   			var hour = new Date(session.startTime).getUTCHours();
   			hour = hour - 6; // Get us back to Central time regardleses of locale;
@@ -66,7 +63,7 @@ angular.module('devfestApp')
   			} else {
   				//room not specified and it's not an "all attendee", somebody messed up their data entry!
   			}
-  		};
+  		}
 
   		$scope.prettySchedule = p;
 
@@ -75,9 +72,10 @@ angular.module('devfestApp')
 	$scope.openFormModal = function(session) {
 		console.log("Modal is now open with ",session);
 		$scope.session = session;
-		var modalInstance = $modal.open({
+		
+		/*var modalInstance = $modal.open({
 		  animation: true,
-		  templateUrl: 'modalSessionView.html',
+		  templateUrl: 'views/schedule-session.html',
 		  controller: 'SessionModalCtrl',
 		  resolve: {
 		    session: function() {
@@ -94,7 +92,7 @@ angular.module('devfestApp')
 		  } else if (results.action === 'edit') {
 		    $scope.edit(results.session);
 		  }
-		});
+		});*/
 	};
 });
 
@@ -123,29 +121,16 @@ Let's make the data look like
  * Controller of the devfestApp
  */
 angular.module('devfestApp')
-  .controller('SessionModalCtrl', function ($scope, $modalInstance, session, speakersAsObject) {
-    $scope.session = session;
-    $scope.speakersAsObject = speakersAsObject;
-    $scope.err = null;
+  .controller('SessionModalCtrl', function ($scope, $modalInstance, Auth, $state, $stateParams, $firebaseArray, $firebaseObject, Ref) {
+  	$scope.user = Auth.$getAuth();
+  	
+  	
+    $scope.session = $firebaseObject(Ref.child('devfest2016').child('schedule').child($stateParams['sessionId']));
+    $scope.speakersAsObject = $firebaseObject(Ref.child('devfest2016').child('speakers'));
     
-    $scope.saveSession = function(session) {
-      if (session && session.$id) {
-        $modalInstance.close({
-          'action': 'edit',
-          'session': session
-        });
-      } else if (session) {
-        $modalInstance.close({
-          'action': 'add',
-          'session': session
-        });
-      } else {
-        $scope.err = 'Please fill out the form or click Cancel to close.';
-      }
-    };
-   
     $scope.cancel = function () {
       $modalInstance.dismiss('cancel');
+      
     };
     
      $scope.rooms = {
