@@ -10,11 +10,11 @@ angular.module('devfestApp')
   .config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
     $locationProvider.html5Mode(true);
     
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise('/');
     $stateProvider
     .state('main', {
-      url: "/",
-      templateUrl: "views/main.html",
+      url: '/',
+      templateUrl: 'views/main.html',
       controller: 'MainCtrl'
     })
     .state('schedule', {
@@ -26,7 +26,7 @@ angular.module('devfestApp')
       	url: '/:sessionId',
       	onEnter: function($stateParams, $state, $modal) {
 				var modal = $modal.open({
-					templateUrl: "views/schedule-session.html",
+					templateUrl: 'views/schedule-session.html',
 					controller: 'SessionModalCtrl'
 				})
 				.result.then(function() {
@@ -34,7 +34,6 @@ angular.module('devfestApp')
 				}, function() {
 					$state.go('schedule');
 				});
-				console.log(modal);
 			}
       })
       .state('schedule-edit', {
@@ -66,7 +65,5 @@ angular.module('devfestApp')
       	url: '/account',
         templateUrl: 'views/account.html',
         controller: 'AccountCtrl'
-      })
-  }])
-
-  
+      });
+  }]);
