@@ -33,17 +33,15 @@
 	 				<span ng-show="rooms[session.room]">{{rooms[session.room]}}</span>
 	 				<span ng-hide="rooms[session.room]">{{session.room}}</span>
 				</div>
-		 		<div class='col-md-2' style="padding:0" ng-repeat="(roomId,roomName) in rooms">
-		 			<!-- ng-click='ShowLessonPopup({{id}})'-->
-		 			<div ng-repeat="session in time[roomId]" ng-click="openFormModal(session)">
-			 			<div class='session' ng-class="session.category">
-			 				<strong>{{session.title}}</strong><br/>
-			 				<span ng-repeat="speakerId in session.speakers">
-			 					{{speakersAsObject[speakerId].name}}
-			 				</span>
-			 				<div class="showMobile"><span ng-show="rooms[session.room]">{{rooms[session.room]}}</span></div>
-			 			</div>
-			 		</div>
+		 		<div class='col-md-2' style="padding:0;" ng-repeat="(roomId,roomName) in rooms" ng-click="openFormModal(time[roomId][0])" ng-class="time[roomId][0].category" ng-show="!time.all[0]">
+		 			
+		 			<div class='session' >
+		 				<strong>{{time[roomId][0].title}}</strong><br/>
+		 				<span ng-repeat="speakerId in time[roomId][0].speakers">
+		 					{{speakersAsObject[speakerId].name}}
+		 				</span>
+		 				<div class="showMobile"><span ng-show="rooms[time[roomId][0].room]">{{rooms[time[roomId][0].room]}}</span></div>
+		 			</div>
 		 		</div>
 	
 			</div>
