@@ -25,7 +25,7 @@
 	 		<div class='panel-body'>
 	
 				<!-- All Attendee Sessions -->
-				<div class="col-md-12" ng-repeat="session in time.all" ng-click="openFormModal(session)">
+				<div class="col-md-12" ng-repeat="session in time.all" ui-sref="schedule.modal({sessionId:session.$id})">
 					<strong>{{session.title}}</strong>
 	 				<span ng-repeat="speakerId in session.speakers" ng-hide='session.speakers.length > 0'>
 	 					<br/>{{speakersAsObject[speakerId].name}}
@@ -33,6 +33,7 @@
 	 				<span ng-show="rooms[session.room]">{{rooms[session.room]}}</span>
 	 				<span ng-hide="rooms[session.room]">{{session.room}}</span>
 				</div>
+				<!-- Normal Sessions -->
 		 		<div class='col-md-2' style="padding:0;" ng-repeat="(roomId,roomName) in rooms" ui-sref="schedule.modal({sessionId:time[roomId][0].$id})"  ng-class="time[roomId][0].category" ng-show="!time.all[0]">
 		 			
 		 			<div class='session' >
