@@ -20,7 +20,7 @@
 	 	<div class="col-md-2" ng-repeat="(roomid,name) in rooms">{{name}}</div>
 	 </div>
 
-	 <div class='row panel-default' ng-repeat="(timeid,time) in prettySchedule" ng-show-admin="">
+	 <div class='row panel-default' ng-repeat="(timeid,time) in prettySchedule">
 		 <div class='panel-heading'><strong>{{'2016-02-06T' + (timeid > 9 ? timeid : '0' + timeid) +  ':00-06:00' | date : "h:mm a"}}</strong></div>
 	 		<div class='panel-body'>
 	
