@@ -11,10 +11,11 @@
 			  Android, Design, Chrome & Web, Cloud, IoT, Reach<br />
 			  <!-- Add sessions (Auth required) -->
 			  <a ng-show-admin="" class="btn btn-sm btn-success"  ng-href="/schedule-edit" >Edit Schedule</a>
-	<!--         <a ng-show-admin="" class="btn btn-sm btn-success" ng-click="openFormModal()">Add Sponsor</a>  -->
+
 		   </h2>
 		  </div>
 	  </div>
+	  <div style="margin-bottom:16px;" ng-show="agenda">Show Only My Agenda <input type="checkbox" ng-model="onlyMyAgenda"></div>
 	  <!-- Need this header if not mobile -->
 	 <div class="row hideMobile" ng-show-admin="">
 	 	<div class="col-md-2" ng-repeat="(roomid,name) in rooms">{{name}}</div>
@@ -34,9 +35,9 @@
 	 				<span ng-hide="rooms[session.room]">{{session.room}}</span>
 				</div>
 				<!-- Normal Sessions -->
-		 		<div class='col-md-2' style="padding:0;" ng-repeat="(roomId,roomName) in rooms" ui-sref="schedule.modal({sessionId:time[roomId][0].$id})"  ng-class="time[roomId][0].category" ng-show="!time.all[0]">
+		 		<div class='col-md-2' style="padding:0;" ng-repeat="(roomId,roomName) in rooms" ui-sref="schedule.modal({sessionId:time[roomId][0].$id})"  ng-class="(agenda[time[roomId][0]['$id']] || !onlyMyAgenda) ? time[roomId][0].category : ''" ng-show="!time.all[0]">
 		 			
-		 			<div class='session' >
+		 			<div class='session' ng-show="agenda[time[roomId][0]['$id']] || !onlyMyAgenda">
 		 				<strong>{{time[roomId][0].title}}</strong><br/>
 		 				<span ng-repeat="speakerId in time[roomId][0].speakers">
 		 					{{speakersAsObject[speakerId].name}}
