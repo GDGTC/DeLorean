@@ -8,9 +8,10 @@
  * Controller of the devfestApp
  */
 angular.module('devfestApp')
-  .controller('SpeakersCtrl', function ($scope, Ref, $firebaseArray, $timeout, $modal, $window, $location, Config) {
+  .controller('SpeakersCtrl', function ($scope, Ref, $firebaseArray, $firebaseObject, $timeout, $modal, $window, $location, Config) {
     $scope.site = Config;
     $scope.speakers = $firebaseArray(Ref.child('devfest2016').child('speakers'));
+    //$scope.speakerImages = $firebaseObject(Ref.child('images/devfest2016/speakers'));
 
     $scope.openFormModal = function(speaker) {
       $scope.speaker = speaker;
