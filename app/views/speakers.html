@@ -14,7 +14,7 @@
         <li class="col-lg-3 col-md-3 col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3 speaker-item" ng-repeat="speaker in speakers | orderBy: 'name'">
           <div class="speaker-item-content" style="cursor: pointer;background-color:#171212;color:white;" ng-click="openInfoModal(speaker)">
             <div ng-show="speaker.image" >
-	            <div style="height:150px;background-image:url({{ speaker.image }});background-size: cover;background-position:center;">
+	            <div style="height:150px;background-image:url({{ speaker.imagepath }});background-size: cover;background-position:center;">
 	            </div>
 	            <!--<img ng-src="{{ speaker.image }}" alt="{{ speaker.name }}" style="" />-->
 	            <div style="height:75px;display:flex;align-items:center;justify-content:center;">
@@ -87,7 +87,7 @@
     <div class="modal-body">
       <div>
         <div class="pull-left">
-          <img class="speaker-image" ng-src="{{ speaker.image }}">
+          <img class="speaker-image" ng-src="{{ speaker.imagepath }}">
         </div>
         <div>
           <h3><small>{{ speaker.company }}</small></h3>
