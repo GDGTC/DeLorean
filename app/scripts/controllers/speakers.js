@@ -11,7 +11,24 @@ angular.module('devfestApp')
   .controller('SpeakersCtrl', function ($scope, Ref, $firebaseArray, $firebaseObject, $timeout, $modal, $window, $location, Config) {
     $scope.site = Config;
     $scope.speakers = $firebaseArray(Ref.child('devfest2016').child('speakers'));
-    //$scope.speakerImages = $firebaseObject(Ref.child('images/devfest2016/speakers'));
+    
+    $scope.migrate = function() {
+    	angular.forEach($scope.speakers, function(speaker) {
+    		if(speaker.image && speaker.image !== true) {
+    			speaker.image = true;
+
+    			
+    			$scope.speakers.$save(speaker);
+    			
+    		}
+    		if(speaker.imagepath) {
+    				console.log("Deleting imagepath on speaker " + speaker.name);
+    				delete speaker.imagepath;
+    				$scope.speakers.$save(speaker);
+    		}
+    	});
+
+    };
 
     $scope.openFormModal = function(speaker) {
       $scope.speaker = speaker;
@@ -56,11 +73,40 @@ angular.module('devfestApp')
     };
 
     $scope.add = function(speaker) {
-      $scope.speakers.$add(speaker);
+		// Remove the image from the object
+		if(speaker.image) {
+			var imageData = speaker.image;
+			speaker.image = true;
+		}
+		var speakerPromise = $scope.speakers.$add(speaker);
+		console.log("Speaker's id is " + speaker.$id + " which should be blank because this is add.");
+		
+		if(speaker.image) {
+			// Now migrate the image into separate data source
+			speakerPromise.then(function(ref) {
+				var id = ref.key();
+				var imageRef = Ref.child('/images/devfest2016/speakers/' + id);
+				imageRef.set(imageData);
+			});
+		}
     };
 
     $scope.edit = function(speaker) {
-      $scope.speakers.$save(speaker);
+		if(speaker.image) {
+			var imageData = speaker.image;
+			speaker.image = true;
+		}
+		var speakerPromise = $scope.speakers.$save(speaker);
+		console.log("Speaker's id is " + speaker.$id + " which should have something because this is save.");
+
+		if(speaker.image) {
+			// Now migrate the image into separate data source
+			speakerPromise.then(function(ref) {
+				var id = ref.key();
+				var imageRef = Ref.child('/images/devfest2016/speakers/' + id);
+				imageRef.set(imageData);
+			});
+		}
     };
   
     $scope.delete = function(speaker) {

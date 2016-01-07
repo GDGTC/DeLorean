@@ -1,3 +1,5 @@
+  <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+
 <section id="schedule" class="gray-bg">
 	<style>
 		label {display:block;}
@@ -61,7 +63,7 @@
 					<option value="2016-02-07T00:00Z">6PM</option>
 				</select>
 				</label>
-				<label><span>Description</span> <input ng-model="session.description"></label>
+				<label><span>Description</span> <textarea ng-model="session.description"></textarea>
 				<label><span>Category</span> <input ng-model="session.category" placeholder="{{categories}}"></label>
 				<button ng-click="schedule.$save(session);">Save</button>
 				<button ng-click="schedule.$remove(session);">Delete</button>

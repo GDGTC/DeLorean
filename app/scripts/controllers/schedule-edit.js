@@ -28,5 +28,6 @@ angular.module('devfestApp')
 	"cafeteria": "Cafeteria"};
 	
 	$scope.categories = "android, chromeweb, design, cloud, iot, reach";
+
     
 });
