@@ -8,7 +8,14 @@
  * Controller of the devfestApp
  */
 angular.module('devfestApp')
-  .controller('ScheduleEditCtrl', function ($scope, Ref, $firebaseArray, $firebaseObject, $timeout, $modal, $window, $location, Config) {
+  .controller('ScheduleEditCtrl', function ($scope, Ref, $firebaseArray, $firebaseObject, $timeout, $modal, $window, $location, Config, Auth, $state) {
+
+  	// Make sure users and google don't end up here on accident
+  	$scope.user = Auth.$getAuth();
+  	if(!$scope.user || !$scope.user.uid) {
+  		$state.go('schedule');
+  	}
+
     $scope.schedule = $firebaseArray(Ref.child('devfest2016').child('schedule'));
     $scope.speakers = $firebaseArray(Ref.child('devfest2016').child('speakers'));
     $scope.speakersAsObject = $firebaseObject(Ref.child('devfest2016').child('speakers'));
