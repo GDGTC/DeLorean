@@ -128,19 +128,25 @@ angular.module('devfestApp')
   .controller('SessionModalCtrl', function ($scope, $modalInstance, Auth, $state, $stateParams, $firebaseArray, $firebaseObject, Ref) {
   	$scope.user = Auth.$getAuth();
   	
-  	
-    $scope.session = $firebaseObject(Ref.child('devfest2016').child('schedule').child($stateParams.sessionId));
-    $scope.speakersAsObject = $firebaseObject(Ref.child('devfest2016').child('speakers'));
 
-    if($scope.user && $scope.user.uid) {
-    	var favObject = $firebaseObject( Ref.child('users').child($scope.user.uid).child('/agendas/2016').child($stateParams.sessionId) );
-    	favObject.$bindTo($scope, 'favorite');
-    }
-    
-    $scope.cancel = function () {
+  	$scope.cancel = function () {
       $modalInstance.dismiss('cancel');
-      
     };
+
+
+  	if($stateParams.sessionId.length > 0) {
+	    $scope.session = $firebaseObject(Ref.child('devfest2016').child('schedule').child($stateParams.sessionId));
+	    $scope.speakersAsObject = $firebaseObject(Ref.child('devfest2016').child('speakers'));
+
+	    if($scope.user && $scope.user.uid) {
+	    	var favObject = $firebaseObject( Ref.child('users').child($scope.user.uid).child('/agendas/2016').child($stateParams.sessionId) );
+	    	favObject.$bindTo($scope, 'favorite');
+	    }
+	} else {
+		$scope.cancel();
+	}
+    
+    
     
      $scope.rooms = {
 		"auditorium":"Main Auditorium",

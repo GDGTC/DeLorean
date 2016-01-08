@@ -25,7 +25,12 @@ angular.module('devfestApp')
       .state('schedule.modal', {
       	url: '/:sessionId',
       	onEnter: function($stateParams, $state, $modal) {
-				var modal = $modal.open({
+				// Don't allow blank session popup
+				if($stateParams.sessionId === '') {
+					$state.go('schedule');
+					return;
+				}
+				$modal.open({
 					templateUrl: 'views/schedule-session.html',
 					controller: 'SessionModalCtrl'
 				})
