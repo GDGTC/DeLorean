@@ -11,24 +11,6 @@ angular.module('devfestApp')
   .controller('SpeakersCtrl', function ($scope, Ref, $firebaseArray, $firebaseObject, $timeout, $modal, $window, $location, Config) {
     $scope.site = Config;
     $scope.speakers = $firebaseArray(Ref.child('devfest2016').child('speakers'));
-    
-    $scope.migrate = function() {
-    	angular.forEach($scope.speakers, function(speaker) {
-    		if(speaker.image && speaker.image !== true) {
-    			speaker.image = true;
-
-    			
-    			$scope.speakers.$save(speaker);
-    			
-    		}
-    		if(speaker.imagepath) {
-    				console.log("Deleting imagepath on speaker " + speaker.name);
-    				delete speaker.imagepath;
-    				$scope.speakers.$save(speaker);
-    		}
-    	});
-
-    };
 
     $scope.openFormModal = function(speaker) {
       $scope.speaker = speaker;
