@@ -881,9 +881,7 @@ ul.speaker-social li a {
 	line-height: .8em;
 }
 
-.showMobile {
-	display: none;
-}
+
 
 .android {
 	background-color: #D9EAD3;
@@ -936,8 +934,15 @@ ul.speaker-social li a {
   .session {
   	padding: 16px;
   }
-}
 
+}
+@media (min-width: 992px) {
+	
+
+  .showMobile {
+	display: none;
+  }
+}
 @media (max-width: 991px) {
   /* NAVIGATION BAR*/
   .navbar-left {
@@ -988,6 +993,7 @@ ul.speaker-social li a {
   .hideMobile {
   	display: none;
   }
+
   .session {
   	border:1px solid #DCDCDC;
   	padding:16px;

@@ -56,14 +56,13 @@ angular.module('devfestApp')
 
     $scope.add = function(speaker) {
 		// Remove the image from the object
-		if(speaker.image) {
+		if(speaker.image && speaker.image !== true) {
 			var imageData = speaker.image;
 			speaker.image = true;
 		}
 		var speakerPromise = $scope.speakers.$add(speaker);
-		console.log("Speaker's id is " + speaker.$id + " which should be blank because this is add.");
 		
-		if(speaker.image) {
+		if(speaker.image && speaker.image !== true) {
 			// Now migrate the image into separate data source
 			speakerPromise.then(function(ref) {
 				var id = ref.key();
@@ -74,14 +73,14 @@ angular.module('devfestApp')
     };
 
     $scope.edit = function(speaker) {
-		if(speaker.image) {
+		if(speaker.image && speaker.image !== true) {
 			var imageData = speaker.image;
 			speaker.image = true;
 		}
 		var speakerPromise = $scope.speakers.$save(speaker);
 		console.log("Speaker's id is " + speaker.$id + " which should have something because this is save.");
 
-		if(speaker.image) {
+		if(speaker.image && speaker.image !== true) {
 			// Now migrate the image into separate data source
 			speakerPromise.then(function(ref) {
 				var id = ref.key();
