@@ -15,7 +15,7 @@
 	<div class="form-group" ng-show="session.speakers">
 		<label for="speaker">Speaker:</label>
 		<div ng-repeat="id in session.speakers" style="font-style:italic;">
-			{{speakersAsObject[id].name}}
+			<a ng-click="viewSpeaker(id);">{{speakersAsObject[id].name}}</a>
 		</div>
 	</div>
 	<div class="form-group">

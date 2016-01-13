@@ -133,6 +133,13 @@ angular.module('devfestApp')
       $modalInstance.dismiss('cancel');
     };
 
+    $scope.viewSpeaker = function(id) {
+    	console.log("going to speaker page: ", id);
+    	$modalInstance.dismiss({action:'speakerForward',id:id});
+    	
+    	console.log('sent and killed this popup');
+    };
+
 
   	if($stateParams.sessionId.length > 0) {
 	    $scope.session = $firebaseObject(Ref.child('devfest2016').child('schedule').child($stateParams.sessionId));
@@ -145,6 +152,7 @@ angular.module('devfestApp')
 	} else {
 		$scope.cancel();
 	}
+
     
     
     
