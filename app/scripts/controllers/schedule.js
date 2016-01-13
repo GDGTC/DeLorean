@@ -76,27 +76,6 @@ angular.module('devfestApp')
 	$scope.openFormModal = function(session) {
 		console.log("Modal is now open with ",session);
 		$scope.session = session;
-		
-		/*var modalInstance = $modal.open({
-		  animation: true,
-		  templateUrl: 'views/schedule-session.html',
-		  controller: 'SessionModalCtrl',
-		  resolve: {
-		    session: function() {
-		      return $scope.session;
-		    },
-		    speakersAsObject: function() {
-		    	return $scope.speakersAsObject;
-		    }
-		  }
-		});
-		modalInstance.result.then(function(results) {
-		  if (results.action === 'add') {
-		    $scope.add(results.session);
-		  } else if (results.action === 'edit') {
-		    $scope.edit(results.session);
-		  }
-		});*/
 	};
 });
 
@@ -134,10 +113,7 @@ angular.module('devfestApp')
     };
 
     $scope.viewSpeaker = function(id) {
-    	console.log("going to speaker page: ", id);
     	$modalInstance.dismiss({action:'speakerForward',id:id});
-    	
-    	console.log('sent and killed this popup');
     };
 
 

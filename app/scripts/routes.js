@@ -66,7 +66,7 @@ angular.module('devfestApp')
 				$state.go('speakers');
 			}, function(result) {
 				// This has to live here otherwise we have 2 state transitions that conflict
-				if(result.action === 'scheduleForward') {
+				if(result.action === 'sessionForward') {
 					$state.go('schedule.modal', {sessionId:result.id});
 				} else {
 					$state.go('speakers');

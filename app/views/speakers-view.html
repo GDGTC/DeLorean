@@ -9,7 +9,11 @@
 				<img class="speaker-image" ng-src="https://devfest.fluin.io/speakers/{{ speaker.$id }}/650x650" ng-show="speaker.image">
 			</div>
 			<div>
+				
 				<h3><small>{{ speaker.company }}</small></h3>
+				<div ng-repeat="session in sessions">
+					<a ng-click="viewSession(session.$id)">{{session.title}}</a>
+				</div>
 				<p>{{ speaker.bio }}</p>
 			</div>
 		</div>

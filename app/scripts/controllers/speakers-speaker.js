@@ -3,6 +3,8 @@ angular.module('devfestApp')
 .controller('SpeakerModalCtrl', function ($scope, Ref, $window, $modalInstance, $firebaseObject, $firebaseArray, $stateParams) {
 	$scope.speakers = $firebaseArray(Ref.child('devfest2016').child('speakers'));
 	$scope.err = null;
+
+	$scope.sessions = [];
 	
 	$scope.cancel = function () {
 		$modalInstance.dismiss('cancel');
@@ -17,7 +19,21 @@ angular.module('devfestApp')
 		console.log('Leaving the page because we could not find a speaker ID.');
 		$scope.cancel();
 		return;
-	}    
+	}   
+
+	// let's figure out which sessions they are a part of
+	var scheduleRef = Ref.child('devfest2016/schedule');
+	scheduleRef.on('child_added', function(snapshot) {
+		
+		
+		if(snapshot.val().speakers) {
+			for (var key in snapshot.val().speakers) {
+				if($stateParams.speakerId === snapshot.val().speakers[key]) {
+					$scope.sessions.push($firebaseObject(scheduleRef.child(snapshot.key())));
+				}
+			}
+		}
+	});
 
 
 	
@@ -108,4 +124,8 @@ angular.module('devfestApp')
     	$window.open(link, '_blank');
     	return false;
     };
+
+    $scope.viewSession = function(id) {
+		$modalInstance.dismiss({action:'sessionForward',id:id});
+    }
 });
