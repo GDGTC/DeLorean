@@ -115,6 +115,8 @@ NOTE: The following deploy process has only been used with the GAE PHP SDK. Also
 
 8. When ready, click the blue deploy button to upload your site to GAE, and now you have a DevFest site!
 
+This project has also successfully been built and deployed to firebase hosting.
+
 ## Manage Data
 
 1. Create a login for your GDG chapter
