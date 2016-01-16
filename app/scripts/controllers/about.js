@@ -38,7 +38,4 @@ angular.module('devfestApp')
         $scope.loading = false;
       });
     
-    $scope.$on('$viewContentLoaded', function() {
-      $window.ga('send', 'pageview', { page: $location.path() });
-    });
   });

@@ -66,13 +66,6 @@ angular.module('devfestApp')
       }
     };
     
-    $scope.$on('$viewContentLoaded', function(event) {
-      $window.ga('send', 'pageview', { page: $location.path() });
-    });
-    
-    $scope.gaClick = function(category, action, label, value) {
-      $window.ga('send', 'event', category, action, label, value);
-    }
   });
 
 /**

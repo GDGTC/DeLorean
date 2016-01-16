@@ -94,4 +94,21 @@ angular.module('devfestApp')
 		templateUrl: 'views/account.html',
 		controller: 'AccountCtrl'
 	});
+}])
+.run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
+  $rootScope
+    .$on('$stateChangeSuccess',
+      function(){
+          if( $window.ga ) {
+            $window.ga('send', 'pageview', { page: $location.path() });
+          }
+
+          if ($window.sp) {
+            $window.sp('trackPageView', $location.protocol() + '//' + $location.host() + $location.path() );
+          }
+        });
+
+
+  // Check to see if they want to subscribe
+  // http://eepurl.com/bvmnGP
 }]);

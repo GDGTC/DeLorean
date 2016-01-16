@@ -1,12 +1,12 @@
 'use strict';
 
 var rooms = {
-	"auditorium":"Main Auditorium",
-	"smallauditorium": "Small Auditorium",
-	"lab": "Laboratory Classroom",
-	"classroom1": "Classroom 1",
-	"classroom2": "Classroom 2",
-	"classroom3": "Classroom 3"};
+	'auditorium':'Main Auditorium',
+	'smallauditorium': 'Small Auditorium',
+	'lab': 'Laboratory Classroom',
+	'classroom1': 'Classroom 1',
+	'classroom2': 'Classroom 2',
+	'classroom3': 'Classroom 3'};
 var roomOrder = Object.keys(rooms);
 
 
@@ -18,7 +18,7 @@ var roomOrder = Object.keys(rooms);
  * Controller of the devfestApp
  */
 angular.module('devfestApp')
-  .controller('ScheduleCtrl', function ($scope, Auth, Ref, $firebaseArray, $firebaseObject, $timeout, $modal, $window, $location, Config) {
+  .controller('ScheduleCtrl', function ($scope, Auth, Ref, $firebaseArray, $firebaseObject) {
   	var user = Auth.$getAuth();
   	if(user && user.uid) {
   		$scope.agenda = $firebaseObject( Ref.child('users').child(user.uid).child('/agendas/2016') );
@@ -31,18 +31,14 @@ angular.module('devfestApp')
 
 	// I hate timezones. - Stephen 2015-12-22 11:48 GMT -6
 
-    // Timezones suck. All DB dates are in UTC
-    var everythingStart = new Date(Date.UTC(2016,2,6,14,0,0));
-
-
-	var unwatch = $scope.schedule.$watch(function() {
+	$scope.schedule.$watch(function() {
 		/**
 		 * We really need to fix this! This runs n times for when we load n items
 		 */
-  		console.log("data changed!");
+  		console.log('Schedule data changed, reprocessing.');
   		//console.log($scope.schedule);
 
-  		var i, p, prettySchedule;
+  		var i, p;
 
 
   		// First let's make an array of objects for our time slots
@@ -74,7 +70,7 @@ angular.module('devfestApp')
 	});
 	
 	$scope.openFormModal = function(session) {
-		console.log("Modal is now open with ",session);
+		console.log('Modal is now open with ',session);
 		$scope.session = session;
 	};
 });
@@ -133,13 +129,13 @@ angular.module('devfestApp')
     
     
      $scope.rooms = {
-		"auditorium":"Main Auditorium",
-		"smallauditorium": "Small Auditorium",
-		"lab": "Laboratory Classroom",
-		"classroom1": "Classroom 1",
-		"classroom2": "Classroom 2",
-		"classroom3": "Classroom 3",
-		"cafeteria": "Cafeteria"};
+		'auditorium':'Main Auditorium',
+		'smallauditorium': 'Small Auditorium',
+		'lab': 'Laboratory Classroom',
+		'classroom1': 'Classroom 1',
+		'classroom2': 'Classroom 2',
+		'classroom3': 'Classroom 3',
+		'cafeteria': 'Cafeteria'};
 });
   
   
