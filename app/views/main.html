@@ -77,33 +77,30 @@
       </div>
       <div class="clearfix"></div>
       <div class="col-lg-10 col-lg-offset-1">
-        <h4>General Sponsor</h4>
+        <h4>Marshmallow Premiere Sponsor</h4>
         <ul class="list-inline">
-          <li><a href="https://www.google.com.ua/intl/en/about/" target="_blank"><img src="../images/google.png" title="Google" alt="Google" /></a></li>
-          <li><a ng-href="{{ site.website }}" target="_blank"><img src="../images/gdg_group.png" title="{{ event.name }}" alt="{{ event.name }}" /></a></li>
-        </ul>
+          <li><a href="https://www.google.com/intl/en/about/" target="_blank"><img src="../images/google.png" title="Google" alt="Google" /></a></li>
+          <li><a href="https://codewithtarget.com" target="_blank"><img src="../images/sponsors/target.png" title="Target" alt="Target" style="width:70%;"/></a></li>
+          <li><a href="https://nerdery.com/" target="_blank"><img src="/images/sponsors/nerdery.png" title="Nerdery" alt="Nerdery" /></a></li
+>        </ul>
 
-        <h4>Partner Sponsors</h4>
+        <h4>Lollipop Partner Sponsors</h4>
         <ul class="list-inline">
           <li><a href="http://www.agosto.com/" target="_blank"><img src="../images/sponsors/agosto.png" title="agosto" alt="agosto" /></a></li>
-          <li><a href="https://codewithtarget.com" target="_blank"><img src="../images/sponsors/target.png" title="Target" alt="Target" /></a></li>
           <li><a href="https://livefront.com" target="_blank"><img src="../images/sponsors/livefront.png" title="Livefront" alt="livefront" /></a></li>
         </ul>
 
-        <h4>Community Sponsors</h4>
+        <h4>KitKat Community Sponsors</h4>
         <ul class="list-inline">
-          <li><a href="https://mentormate.com" target="_blank"><img src="../images/sponsors/mentormate.png" title="mentormate" alt="mentormate" /></a></li>
+          <li><a href="https://mentormate.com" target="_blank"><img src="../images/sponsors/mentormate.png" title="MentorMate" alt="MentorMate" /></a></li>
+          <li><a href="https://www.theironyard.com/" target="_blank"><img src="/images/sponsors/theironyard.svg" title="The Iron Yard" alt="The Iron Yard"/></a></li>
         </ul>
-        <span ng-repeat="(key, value) in sponsors | levelSorter:'level' | groupBy:'level'">
-          <h4>{{ key }} Sponsor</h4>
-          <ul class="list-inline">
-            <li ng-repeat="sponsor in value">
-              <a ng-href="{{ sponsor.link }}" ng-click="gaClick('sponsor', 'click', '{{ sponsor.company }}')" target="_blank"><img ng-src="{{ sponsor.image }}" title="{{ sponsor.description }}" alt="{{ sponsor.company }}" /></a>
-              <a ng-show-admin="" class="btn btn-sm btn-primary" ng-click="openFormModal(sponsor)">Edit</a>
-              <a ng-show-admin="" class="btn btn-sm btn-danger" ng-click="deleteSponsor(sponsor)">Delete</a>
-            </li>
-          </ul>
-        </span>
+
+        <h4>Venue Sponsor</h4>
+        <ul>
+        	<li><a href="http://www.stthomas.edu/" target="_blank"><img src="/images/sponsors/UST.png" title="University of St Thomas" alt="University of St Thomas" style="height:100px;"/></a></li>
+        </ul>
+
         <div>
           <a ng-href="/#/sponsorship" ng-click="gaClick('button', 'click', 'Sponsor: Learn More')" class="cta cta-default all-caps" ng-show="{{ site.sponsorLevelLinkFromMainPage }}">Sponsorship</a>
           <a ng-href="{{ site.sponsorURL }}" ng-click="gaClick('button', 'click', 'Become A Sponsor 1')" target="_blank" class="cta cta-default all-caps">Become A Sponsor</a>
