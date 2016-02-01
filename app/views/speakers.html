@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="clearfix"></div>
-	<a ng-show-admin="" class="btn btn-sm btn-success"  ui-sref="schedule.modal({sessionId:'new'})" >Add Speaker</a>
+	<a ng-show-admin="" class="btn btn-sm btn-success"  ui-sref="speakers.modal({speakerId:'new'})" >Add Speaker</a>
       <ul ng-cloak ng-if="speakers.length > 0" id="speaker_grid">
         <li class="col-lg-3 col-md-3 col-sm-4 col-sm-offset-0 col-xs-6 col-xs-offset-3 speaker-item" ng-repeat="speaker in speakers | orderBy: 'name'">
           <div class="speaker-item-content" style="cursor: pointer;background-color:#171212;color:white;" ui-sref="speakers.modal({speakerId:speaker.$id})">
