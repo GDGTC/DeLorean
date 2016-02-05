@@ -18,7 +18,7 @@
 	  <div style="margin-bottom:16px;" ng-show="agenda">Show Only My Agenda <input type="checkbox" ng-model="onlyMyAgenda"></div>
 	  <!-- Need this header if not mobile -->
 	 <div class="row hideMobile" ng-show-admin="">
-	 	<div class="col-md-2" ng-repeat="(roomid,name) in rooms">{{name}}</div>
+	 	<div class="col-md-2" ng-repeat="(roomid,name) in rooms"><strong>{{name}}</strong></div>
 	 </div>
 
 	 <div class='row panel-default' ng-repeat="(timeid,time) in prettySchedule">

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('devfestApp')
-.config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider) {
+.config(['$routeProvider', '$locationProvider', '$stateProvider', '$urlRouterProvider', '$opbeatProvider', function($routeProvider, $locationProvider, $stateProvider, $urlRouterProvider, $opbeatProvider) {
 	$locationProvider.html5Mode(true);
 
 	$urlRouterProvider.otherwise('/');
@@ -94,6 +94,13 @@ angular.module('devfestApp')
 		templateUrl: 'views/account.html',
 		controller: 'AccountCtrl'
 	});
+
+
+	$opbeatProvider.config({
+		debug: false,
+		orgId: '411adc346fa34378a00c88e9de15c529',
+		appId: 'ddab509ec6'
+	})
 }])
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
   $rootScope
