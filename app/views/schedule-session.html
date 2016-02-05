@@ -22,6 +22,19 @@
 		<label for="description">Description:</label>
 		<div>{{session.description}}</div>
 	</div>
+	<div><strong>Session Feedback</strong></div>
+	<style>
+	.nostrong {width:100%;}
+	.nostrong td {border:none;}
+	.nostrong input {margin:8px;}
+	</style>
+	<table class="nostrong">
+
+		<tr><td>Speaker Quality<br/>(poor= 1, 5=great)</td><td><input type="number" ng-model="sessionFeedback.quality" min="1" max="5"/></td></tr>
+		<tr><td>Environment<br/>(poor= 1, 5=great)</td><td><input type="number" ng-model="sessionFeedback.environment" min="1" max="5"/></td></tr>
+		<tr><td>Recommendation<br/>(wouldn't recommend=1, 5=would recommend)</td><td><input type="number" ng-model="sessionFeedback.recommend" min="1" max="5"/></td></tr>
+	</table>
+
 	</form>
 </div>
 <div class="modal-footer" style="display:flex;justify-content:flex-end;align-items:center;">
@@ -39,6 +52,7 @@
 			<span ng-hide="favorite.$value">Add To</span> 
 			My Agenda
 		</span>
+
 	</div>
 	<button class="btn btn-default" type="button" ng-click="cancel()">back</button>
 </div>
