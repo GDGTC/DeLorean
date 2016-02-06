@@ -3,10 +3,10 @@
 var rooms = {
 	'auditorium':'Main Auditorium',
 	'smallauditorium': 'Small Auditorium',
-	'lab': 'Laboratory Classroom',
-	'classroom1': 'Classroom 1',
-	'classroom2': 'Classroom 2',
-	'classroom3': 'Classroom 3'};
+	'lab': 'Laboratory Classroom (3rd floor)',
+	'classroom1': 'Classroom A (3rd floor)',
+	'classroom2': 'Classroom B (3rd floor)',
+	'classroom3': 'Classroom C (3rd floor)'};
 var roomOrder = Object.keys(rooms);
 
 
@@ -120,9 +120,9 @@ angular.module('devfestApp')
 		'auditorium':'Main Auditorium',
 		'smallauditorium': 'Small Auditorium',
 		'lab': 'Laboratory Classroom',
-		'classroom1': 'Classroom 1',
-		'classroom2': 'Classroom 2',
-		'classroom3': 'Classroom 3',
+		'classroom1': 'Classroom A',
+		'classroom2': 'Classroom B',
+		'classroom3': 'Classroom C',
 		'cafeteria': 'Cafeteria'};
 	
 });
@@ -174,9 +174,9 @@ angular.module('devfestApp')
 		'auditorium':'Main Auditorium',
 		'smallauditorium': 'Small Auditorium',
 		'lab': 'Laboratory Classroom',
-		'classroom1': 'Classroom 1',
-		'classroom2': 'Classroom 2',
-		'classroom3': 'Classroom 3',
+		'classroom1': 'Classroom A',
+		'classroom2': 'Classroom B',
+		'classroom3': 'Classroom C',
 		'cafeteria': 'Cafeteria'};
 });
   
