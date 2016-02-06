@@ -15,6 +15,11 @@ angular.module('devfestApp')
 		templateUrl: 'views/schedule.html',
 		controller: 'ScheduleCtrl'
 	})
+	.state('feedback', {
+		url: '/feedback/:sessionId',
+		templateUrl: 'views/feedback.html',
+		controller: 'FeedbackCtrl'
+	})
 	.state('schedule.modal', {
 		url: '/:sessionId',
 		onEnter: function($stateParams, $state, $modal) {
@@ -33,6 +38,8 @@ angular.module('devfestApp')
 				// This has to live here otherwise we have 2 state transitions that conflict
 				if(result.action === 'speakerForward') {
 					$state.go('speakers.modal', {speakerId:result.id});
+				} else if(result.action === 'feedbackForward') {
+					$state.go('feedback', {sessionId:result.id});
 				} else {
 					$state.go('schedule');
 				}
@@ -72,7 +79,7 @@ angular.module('devfestApp')
 					$state.go('speakers');
 				}
 			});
-		}		
+		}
 	})
 	.state('sponsorship', {
 		url: '/sponsorship',

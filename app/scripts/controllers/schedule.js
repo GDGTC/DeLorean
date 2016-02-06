@@ -96,6 +96,37 @@ Let's make the data look like
 
 */
 
+angular.module('devfestApp')
+.controller('FeedbackCtrl', function($scope, Auth, $state, $stateParams, $firebaseArray, $firebaseObject, Ref) {
+	$scope.user = Auth.$getAuth();
+	
+	if($scope.user && $scope.user.uid) {
+    	var syncObject = $firebaseObject(Ref.child('feedback/2016/').child($scope.user.uid).child($stateParams.sessionId));
+    	syncObject.$bindTo($scope, 'sessionFeedback');
+    	var secondSync = $firebaseObject(Ref.child('users').child($scope.user.uid).child('details'));
+    	secondSync.$bindTo($scope, 'userDetails');
+    }
+    
+    if($stateParams.sessionId.length > 0) {
+	    $scope.session = $firebaseObject(Ref.child('devfest2016').child('schedule').child($stateParams.sessionId));
+	    $scope.speakersAsObject = $firebaseObject(Ref.child('devfest2016').child('speakers'));
+
+	    if($scope.user && $scope.user.uid) {
+	    	var favObject = $firebaseObject( Ref.child('users').child($scope.user.uid).child('/agendas/2016').child($stateParams.sessionId) );
+	    	favObject.$bindTo($scope, 'favorite');
+	    }
+	}
+	     $scope.rooms = {
+		'auditorium':'Main Auditorium',
+		'smallauditorium': 'Small Auditorium',
+		'lab': 'Laboratory Classroom',
+		'classroom1': 'Classroom 1',
+		'classroom2': 'Classroom 2',
+		'classroom3': 'Classroom 3',
+		'cafeteria': 'Cafeteria'};
+	
+});
+
 
 /**
  * @ngdoc function
@@ -108,12 +139,7 @@ angular.module('devfestApp')
   .controller('SessionModalCtrl', function ($scope, $modalInstance, Auth, $state, $stateParams, $firebaseArray, $firebaseObject, Ref) {
   	$scope.user = Auth.$getAuth();
 
-    if($scope.user && $scope.user.uid) {
-    	var syncObject = $firebaseObject(Ref.child('feedback/2016/').child($scope.user.uid).child($stateParams.sessionId));
-    	syncObject.$bindTo($scope, 'sessionFeedback');
-    	var secondSync = $firebaseObject(Ref.child('users').child($scope.user.uid).child('details'));
-    	secondSync.$bindTo($scope, 'userDetails');
-    }
+    
   	
 
   	$scope.cancel = function () {
@@ -137,6 +163,10 @@ angular.module('devfestApp')
 		$scope.cancel();
 	}
 
+	$scope.giveFeedback =  function(){
+		console.log("State changing!");
+		$modalInstance.dismiss({action:'feedbackForward',id:$stateParams.sessionId});
+	}
     
     
     
