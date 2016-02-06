@@ -103,8 +103,10 @@ angular.module('devfestApp')
   .controller('SessionModalCtrl', function ($scope, $modalInstance, Auth, $state, $stateParams, $firebaseArray, $firebaseObject, Ref) {
   	$scope.user = Auth.$getAuth();
 
-    var syncObject = $firebaseObject(Ref.child('feedback/2016/').child($scope.user.uid).child($stateParams.sessionId));
-    syncObject.$bindTo($scope, 'sessionFeedback');
+    if($scope.user && $scope.user.uid) {
+    	var syncObject = $firebaseObject(Ref.child('feedback/2016/').child($scope.user.uid).child($stateParams.sessionId));
+    	syncObject.$bindTo($scope, 'sessionFeedback');
+    }
   	
 
   	$scope.cancel = function () {
