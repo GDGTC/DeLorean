@@ -22,18 +22,21 @@
 		<label for="description">Description:</label>
 		<div>{{session.description}}</div>
 	</div>
-	<div><strong>Session Feedback</strong></div>
-	<style>
-	.nostrong {width:100%;}
-	.nostrong td {border:none;}
-	.nostrong input {margin:8px;}
-	</style>
-	<table class="nostrong">
-
-		<tr><td>Speaker Quality<br/>(poor= 1, 5=great)</td><td><input type="number" ng-model="sessionFeedback.quality" min="1" max="5"/></td></tr>
-		<tr><td>Environment<br/>(poor= 1, 5=great)</td><td><input type="number" ng-model="sessionFeedback.environment" min="1" max="5"/></td></tr>
-		<tr><td>Recommendation<br/>(wouldn't recommend=1, 5=would recommend)</td><td><input type="number" ng-model="sessionFeedback.recommend" min="1" max="5"/></td></tr>
-	</table>
+	<div ng-show="user.uid">
+		<div><strong>Session Feedback</strong></div>
+		<style>
+		.nostrong {width:100%;}
+		.nostrong td {border:none;}
+		.nostrong input {margin:8px;}
+		</style>
+		<table class="nostrong">
+	
+			<tr><td>Speaker Quality<br/>(poor= 1, 5=great)</td><td><input type="number" ng-model="sessionFeedback.quality" min="1" max="5"/></td></tr>
+			<tr><td>Environment<br/>(poor= 1, 5=great)</td><td><input type="number" ng-model="sessionFeedback.environment" min="1" max="5"/></td></tr>
+			<tr><td>Recommendation<br/>(wouldn't recommend=1, 5=would recommend)</td><td><input type="number" ng-model="sessionFeedback.recommend" min="1" max="5"/></td></tr>
+			<tr><td>My Name (for prizes)</td><td><input ng-model="userDetails.fullName"/></td></tr>
+		</table>
+	</div>
 
 	</form>
 </div>
@@ -49,7 +52,7 @@
 		</svg>
 		<span style="margin-left:6px;">
 			<span ng-show="favorite.$value">On</span>
-			<span ng-hide="favorite.$value">Add To</span> 
+			<span ng-hide="favorite.$value">Add To</span>
 			My Agenda
 		</span>
 
