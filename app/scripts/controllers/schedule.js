@@ -57,9 +57,14 @@ angular.module('devfestApp')
   			hour = hour - 6; // Get us back to Central time regardleses of locale;
 
   			if(session.all) {
-  				p[hour].all.push(session);
+  				// Only add it if it's within our std time range
+  				if(p[hour]) {
+  					p[hour].all.push(session);
+  				}
   			} else if(session.room) {
-  				p[hour][session.room].push(session);
+  				if(p[hour]) {
+  					p[hour][session.room].push(session);
+  				}
   			} else {
   				//room not specified and it's not an "all attendee", somebody messed up their data entry!
   			}
