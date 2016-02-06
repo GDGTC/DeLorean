@@ -14,10 +14,10 @@
       </div>
       <div class="collapse navbar-collapse navbar-right" id="devfest-navbar">
         <ul class="nav navbar-nav">
-          <li ng-show-admin="" ng-class="{ active: isActive('/admin')}"><a ng-href="#" data-toggle="collapse" >ADMIN</a> </li>
-          <li ng-show-auth="" ng-class="{ active: isActive('/account')}"><a ng-href="/account" data-toggle="collapse" >Account</a> </li>
-          <li ng-hide-auth="" ng-class="{ active: isActive('/login')}"><a ng-href="/login" data-toggle="collapse" >Log In</a></li>
-          <li ng-class="{ active: isActive('/')}"><a href="/" data-toggle="collapse" data-target="#devfest-navbar">Home</a></li>
+          <li ng-show-admin=""><a ng-href="#" data-toggle="collapse" >ADMIN</a> </li>
+          <li ng-show-auth="" ><a ng-href="/account" data-toggle="collapse" >Account</a> </li>
+          <li ng-hide-auth="" ><a ui-sref="login" data-toggle="collapse" data-target="#devfest-navbar">Log In</a></li>
+          <li ><a href="/" data-toggle="collapse" data-target="#devfest-navbar">Home</a></li>
           <li><a href="http://devfestmn.eventbrite.com/?aff=devfestmnwebsite">Tickets</a></li>
           <li ng-class="{ active: isActive('/schedule')}"><a ng-href="/schedule" data-toggle="collapse" data-target="#devfest-navbar">Schedule</a></li>
           <li ng-class="{ active: isActive('/speakers')}"><a ng-href="/speakers" data-toggle="collapse" data-target="#devfest-navbar">Speakers</a></li>
