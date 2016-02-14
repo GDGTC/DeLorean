@@ -7,7 +7,7 @@
  * Manages authentication to any active providers.
  */
 angular.module('devfestApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $firebaseObject, $timeout, Config) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $q, Ref, $firebaseObject, $timeout, Config, $state) {
 
     $scope.googleLogin = function(){
       var provider = 'google';
@@ -17,7 +17,7 @@ angular.module('devfestApp')
         // Handle success
         console.log(authObject);
         createProfile(authObject);
-        redirect();
+        $state.go('schedule');
 
       }, function (error) {
         // Handle error
@@ -38,10 +38,6 @@ angular.module('devfestApp')
         });
       });
       return def.promise;
-    };
-  
-    function redirect() {
-      $location.path('/account');
     }
 
     function showError(err) {

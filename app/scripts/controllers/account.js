@@ -7,9 +7,12 @@
  * Provides rudimentary account management functions.
  */
 angular.module('devfestApp')
-  .controller('AccountCtrl', function ($scope, Auth, Ref, $firebaseObject, $timeout) {
+  .controller('AccountCtrl', function ($scope, Auth, Ref, $firebaseObject, $timeout, $state) {
     $scope.user = Auth.$getAuth();
-    $scope.logout = function() { Auth.$unauth(); };
+    $scope.logout = function() { 
+      Auth.$unauth();
+      $state.go('schedule'); 
+    };
     $scope.messages = [];
     console.log(Auth);
 
