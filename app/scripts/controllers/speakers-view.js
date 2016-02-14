@@ -19,7 +19,7 @@ angular.module('devfestApp')
 		console.log('Leaving the page because we could not find a speaker ID.');
 		$scope.cancel();
 		return;
-	}   
+	}
 
 	// let's figure out which sessions they are a part of
 	var scheduleRef = Ref.child('devfest2016/schedule');
@@ -56,7 +56,7 @@ angular.module('devfestApp')
 		var speakerPromise;
 		if (speaker && speaker.$id) {
 			speakerPromise = speaker.$save();
-			} else if (speaker) {
+		} else if (speaker) {
 			speakerPromise = $scope.speakers.$add(speaker);
 		} else {
 			$scope.err = 'Please fill out the form or click Cancel to close.';

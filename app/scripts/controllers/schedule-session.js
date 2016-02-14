@@ -13,7 +13,7 @@ angular.module('devfestApp')
 	$scope.categories = 'android, chromeweb, design, cloud, iot, reach';
 	$scope.speakers = $firebaseArray(Ref.child('devfest2016').child('speakers'));
 	$scope.speakersAsObject = $firebaseObject(Ref.child('devfest2016').child('speakers'));
-	$scope.rooms = Rooms.roomNameList;
+	$scope.rooms = Rooms.namedRoomList;
 
 	$scope.cancel = function () {
 	  $modalInstance.dismiss('cancel');

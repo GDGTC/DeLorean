@@ -913,6 +913,9 @@ ul.speaker-social li a {
 .panel-default > .panel-heading {
 	background-image: none;
 }
+.form-group label  {
+	width:100%;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

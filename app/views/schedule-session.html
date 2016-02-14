@@ -7,7 +7,7 @@
 		<form role="form">
 			<div class="form-group">
 				<label for="room">Room:</label>
-				{{rooms[session.room]}}
+				{{rooms[session.room] ? rooms[session.room] : session.room}}
 			</div>
 			<div class="form-group">
 				<label for="time">Time:</label>
@@ -23,10 +23,20 @@
 				<label for="description">Description:</label>
 				<div>{{session.description}}</div>
 			</div>
-			<div ng-show="user.uid">
+			<div class="form-group" ng-show="session.slidesUrl">
+				<label for="slides">Slides:</label>
+				<a href="{{session.slidesUrl}}">{{session.slidesUrl}}</a>
+			</div>
+			<div class="form-group" ng-show="session.youtubeUrl">
+				<label for="slides">Slides:</label>
+				<a href="{{session.youtubeUrl}}">{{session.youtubeUrl}}</a>
+			</div>
+			<!-- Only show session feedback during conference and right after @TODO -->
+			<div ng-show="user.uid && false">
 				<div><strong>Session Feedback</strong></div>
 				<a ng-click="giveFeedback();">Provide Feedback</a>
 			</div>
+
 
 		</form>
 	</div>
@@ -129,6 +139,13 @@
 						<option value="2016-02-07T00:00Z">6PM</option>
 					</select>
 				</label>
+			</div>
+
+			<div class="form-group">
+				<label><span>Slides URL</span> <input ng-model="session.slidesUrl" class="form-control" placeholder="https://slideshare.com/fragglemonster"></label>
+			</div>
+			<div class="form-group">
+				<label><span>YouTube URL</span> <input ng-model="session.youtubeUrl" class="form-control" placeholder="https://youtube.com/awesomejob"></label>
 			</div>
 		</form>
 	</div>
