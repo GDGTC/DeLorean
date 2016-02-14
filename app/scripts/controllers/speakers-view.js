@@ -84,7 +84,7 @@ angular.module('devfestApp')
 	$scope.handleImageAdd = function(evt) {
 		var f = evt.target.files[0];
 		var reader = new FileReader();
-		reader.onload = (function(file) {
+		reader.onload = (function() {
 			return function(e) {
 				var filePayload = e.target.result;
 				$scope.imageData = filePayload;
@@ -95,7 +95,7 @@ angular.module('devfestApp')
 
 	$scope.deleteSpeaker = function() {
 		var speaker = $scope.speaker;
-		if (confirm('Are you sure you want to delete this speaker?')) {
+		if (window.confirm('Are you sure you want to delete this speaker?')) {
 			
 			console.log('Deleting speaker with ID ', speaker.$id);
 			speaker.$remove();
