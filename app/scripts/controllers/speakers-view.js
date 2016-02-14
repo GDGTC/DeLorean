@@ -1,13 +1,13 @@
 'use strict';
 angular.module('devfestApp')
-.controller('SpeakerModalCtrl', function ($scope, Ref, $window, $modalInstance, $firebaseObject, $firebaseArray, $stateParams) {
+.controller('SpeakerModalCtrl', function ($scope, Ref, $window, $uibModalInstance, $firebaseObject, $firebaseArray, $stateParams) {
 	$scope.speakers = $firebaseArray(Ref.child('devfest2016').child('speakers'));
 	$scope.err = null;
 
 	$scope.sessions = [];
 	
 	$scope.cancel = function () {
-		$modalInstance.dismiss('cancel');
+		$uibModalInstance.dismiss('cancel');
 	};
 
 	if($stateParams.speakerId === 'new') {
@@ -72,7 +72,7 @@ angular.module('devfestApp')
 			});
 		}
 
-		$modalInstance.close();
+		$uibModalInstance.close();
 	};
 
 	// If the user uploads an image, store the payload
@@ -99,7 +99,7 @@ angular.module('devfestApp')
 			
 			console.log('Deleting speaker with ID ', speaker.$id);
 			speaker.$remove();
-			$modalInstance.close();
+			$uibModalInstance.close();
 		}
     };
 
@@ -126,6 +126,6 @@ angular.module('devfestApp')
     };
 
     $scope.viewSession = function(id) {
-		$modalInstance.dismiss({action:'sessionForward',id:id});
+		$uibModalInstance.dismiss({action:'sessionForward',id:id});
     }
 });

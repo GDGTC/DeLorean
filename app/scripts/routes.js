@@ -22,13 +22,13 @@ angular.module('devfestApp')
 	})
 	.state('schedule.modal', {
 		url: '/:sessionId',
-		onEnter: function($stateParams, $state, $modal) {
+		onEnter: function($stateParams, $state, $uibModal) {
 			// Don't allow blank session popup
 			if($stateParams.sessionId === '') {
 				$state.go('schedule');
 				return;
 			}
-			$modal.open({
+			$uibModal.open({
 				templateUrl: 'views/schedule-session.html',
 				controller: 'SessionModalCtrl'
 			})
@@ -58,14 +58,14 @@ angular.module('devfestApp')
 	})
 	.state('speakers.modal', {
 		url: '/:speakerId',
-		onEnter: function($stateParams, $state, $modal) {
+		onEnter: function($stateParams, $state, $uibModal) {
 			// Don't allow blank session popup
 			if($stateParams.speakerId === '') {
 				console.log('Cannot visit an empty speaker.');
 				$state.go('speakers');
 				return;
 			}
-			$modal.open({
+			$uibModal.open({
 				templateUrl: 'views/speakers-view.html',
 				controller: 'SpeakerModalCtrl'
 			})

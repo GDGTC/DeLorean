@@ -8,7 +8,7 @@
  * Controller of the devfestApp
  */
 angular.module('devfestApp')
-.controller('SessionModalCtrl', function ($scope, $modalInstance, Auth, Rooms, $state, $stateParams, $firebaseArray, $firebaseObject, Ref) {
+.controller('SessionModalCtrl', function ($scope, $uibModalInstance, Auth, Rooms, $state, $stateParams, $firebaseArray, $firebaseObject, Ref) {
 	$scope.user = Auth.$getAuth();
 	$scope.categories = 'android, chromeweb, design, cloud, iot, reach';
 	$scope.speakers = $firebaseArray(Ref.child('devfest2016').child('speakers'));
@@ -16,7 +16,7 @@ angular.module('devfestApp')
 	$scope.rooms = Rooms.namedRoomList;
 
 	$scope.cancel = function () {
-	  $modalInstance.dismiss('cancel');
+	  $uibModalInstance.dismiss('cancel');
 	};
 
 	if($stateParams.sessionId === 'new') {
@@ -35,11 +35,11 @@ angular.module('devfestApp')
 	}
 
 	$scope.viewSpeaker = function(id) {
-		$modalInstance.dismiss({action:'speakerForward',id:id});
+		$uibModalInstance.dismiss({action:'speakerForward',id:id});
 	};
 
 	$scope.giveFeedback =  function(){
-		$modalInstance.dismiss({action:'feedbackForward',id:$stateParams.sessionId});
+		$uibModalInstance.dismiss({action:'feedbackForward',id:$stateParams.sessionId});
 	};
 
 
